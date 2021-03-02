@@ -1,0 +1,10 @@
+.opponent{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+
+   .custom-button{
+      width: 31%;
+      align-self: center;
+   }
+}

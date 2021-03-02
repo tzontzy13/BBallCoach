@@ -1,0 +1,15 @@
+.team-select{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   // height: 500px;
+
+   .team-select-list{
+      width: 36%;
+   }
+
+   .team-select-add{
+      width: 36%;
+   }
+}

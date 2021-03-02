@@ -2,14 +2,9 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 
-const config = {
-   apiKey: "AIzaSyB0KEihzijhTgAqRiiAjTIay_PNjCHieaM",
-   authDomain: "bball-coach.firebaseapp.com",
-   projectId: "bball-coach",
-   storageBucket: "bball-coach.appspot.com",
-   messagingSenderId: "1030843618482",
-   appId: "1:1030843618482:web:ad2ebf52994b30faaf65ab"
-};
+import firebaseConfig from './config'
+
+const config = firebaseConfig
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
    if (!userAuth) return;
@@ -47,6 +42,23 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
    return await batch.commit()
 }
 
+export const addCollectionAndDocumentsToUser = async (collectionKey, userKey, objectsToAdd, teamName) => {
+   const userRef = firestore.collection(collectionKey).doc(userKey).collection('team')
+
+   const batch = firestore.batch()
+
+   const teamNameRef = userRef.doc('teamName')
+   batch.set(teamNameRef, { teamName })
+
+   objectsToAdd.forEach(obj => {
+      const newDocRef = userRef.doc()
+      batch.set(newDocRef, obj)
+   })
+
+   return await batch.commit()
+
+}
+
 export const convertCollectionsSnapshotToMap = (collections) => {
    const transformedCollection = collections.docs.map(doc => {
       const { title, items } = doc.data()
@@ -63,6 +75,28 @@ export const convertCollectionsSnapshotToMap = (collections) => {
       accumulator[collection.title.toLowerCase()] = collection;
       return accumulator;
    }, {})
+}
+
+export const convertCollectionsSnapshotToList = (collections) => {
+
+   let teamNameOut = ''
+   const transformedCollection = collections.docs.map(doc => {
+      const { playerNumber, playerName, teamName } = doc.data()
+
+      if (teamName) {
+         teamNameOut = teamName
+         return null
+      } else {
+         return {
+            playerNumber,
+            playerName
+         }
+      }
+   })
+
+   const transformedCollection2 = transformedCollection.filter(doc => doc)
+   const toReturn = { players: transformedCollection2, teamName: teamNameOut }
+   return toReturn
 }
 
 export const getCurrentUser = () => {

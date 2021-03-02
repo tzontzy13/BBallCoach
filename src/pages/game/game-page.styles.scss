@@ -1,0 +1,81 @@
+.grid-container {
+   height: 40vw;
+   // width: 100%;
+   display: grid;
+   grid-template-columns: repeat(11, 9%);
+   grid-template-rows: repeat(7, 14%);
+   gap: 0px 0px;
+   grid-template-areas:
+     "time-score-pos time-score-pos time-score-pos time-score-pos time-score-pos time-score-pos time-score-pos time-score-pos time-score-pos time-score-pos time-score-pos"
+     "current court court court court court court court court court court"
+     "current court court court court court court court court court court"
+     "current court court court court court court court court court court"
+     "current court court court court court court court court court court"
+     "current court court court court court court court court court court"
+     "logo bench bench bench bench bench bench bench opponent opponent opponent";
+}
+ 
+.current { 
+   background-color: lightcoral;
+   grid-area: current; }
+ 
+.bench {
+   background-color: lightgreen;
+   grid-area: bench; }
+
+.time-score-pos {
+   background-color: aqua;
+   grid-area: time-score-pos;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+}
+ 
+.opponent {
+   background-color: lightsteelblue;
+   grid-area: opponent; }
+ 
+.logoo {
+   background-color: lightpink;
+   grid-area: logo; }
+ 
+.court {
+   background-color: burlywood;
+   display: grid;
+   grid-template-columns: repeat(9, 1fr);
+   grid-template-rows: repeat(6, 1fr);
+   gap: 0px 0px;
+   grid-template-areas:
+     ". . . . p3C . . . ."
+     ". p3CL . . FT . . p3CR ."
+     ". . p2CL . p2C . p2CR . ."
+     ". . . . . . . . ."
+     ". p2L . . dunk . . p2R ."
+     "p3L . . . . . . . p3R";
+   grid-area: court;
+ }
+ 
+.p3L { grid-area: p3L; }
+ 
+.p3R { grid-area: p3R; }
+ 
+.p3C { grid-area: p3C; }
+ 
+.p3CL { grid-area: p3CL; }
+ 
+.p3CR { grid-area: p3CR; }
+ 
+.FT { grid-area: FT; }
+ 
+.p2C { grid-area: p2C; }
+ 
+.p2CL { grid-area: p2CL; }
+ 
+.p2L { grid-area: p2L; }
+ 
+.p2R { grid-area: p2R; }
+ 
+.p2CR { grid-area: p2CR; }
+ 
+.dunk { grid-area: dunk; }
+ 

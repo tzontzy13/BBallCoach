@@ -1,0 +1,19 @@
+.team-creation{
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   .team-creation-body{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-bottom: 2rem;
+
+      .player-list-container{
+         width: 34%;
+      }
+
+   }
+}

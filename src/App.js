@@ -8,8 +8,10 @@ import ShopPage from './pages/shop/shop.component'
 import Header from './components/header/header.component'
 import SignInUp from './pages/sign-in-up/sign-in-up.component'
 import CheckoutPage from './pages/checkout/checkout.component'
+import WelcomePage from './pages/welcome/welcome.component'
+import TeamPage from './pages/team/team.component'
+import GamePage from './pages/game/game-page.component'
 
-// import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -34,6 +36,16 @@ const App = ({ checkUserSession, currentUser }) => {
                path='/signin'
                render={() => currentUser ? (<Redirect to='/' />) : (<SignInUp />)}
             />
+            <Route exact path='/homepage' component={WelcomePage} />
+            {
+               currentUser
+                  ?
+                  (
+                     <Route path='/team' component={TeamPage} />
+                  )
+                  :
+                  (null)
+            }
          </Switch>
       </div>
    );

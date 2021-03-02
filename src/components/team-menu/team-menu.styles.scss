@@ -1,0 +1,15 @@
+.team-menu{
+   display: flex;
+   flex-direction: column;
+   
+   .team-menu-elements{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+   }
+
+   .team-menu-title{
+      display: flex;
+      justify-content: center;
+   }
+}

@@ -21,10 +21,13 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
       <div className='options'>
          <Link className='option' to='/shop'>
             SHOP
-            </Link>
-         <Link className='option' to='/contact'>
+         </Link>
+         <Link className='option' to='/team'>
+            TEAM
+         </Link>
+         {/* <Link className='option' to='/contact'>
             CONTACT
-            </Link>
+            </Link> */}
          {
             currentUser
                ?

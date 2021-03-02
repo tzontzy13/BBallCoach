@@ -1,0 +1,8 @@
+const TeamActionTypes = {
+   ADD_PLAYER: 'ADD_PLAYER',
+   FETCH_TEAM_START: 'FETCH_TEAM_START',
+   FETCH_TEAM_SUCCESS: 'FETCH_TEAM_SUCCESS',
+   FETCH_TEAM_FAIL: 'FETCH_TEAM_FAIL'
+}
+
+export default TeamActionTypes
