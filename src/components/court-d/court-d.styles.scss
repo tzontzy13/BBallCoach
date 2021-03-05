@@ -1,0 +1,26 @@
+.court{
+   position: relative;
+   width: 100%;
+   height: 100%;
+
+   .court-image{
+      position: absolute;
+      background-size: cover;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      z-index: -10;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      // height: auto;
+   }
+
+   .court-btn-pos{
+      text-align: center;
+      align-self: center;
+   }
+
+   .p3C{
+      align-self: flex-start;
+   }
+}

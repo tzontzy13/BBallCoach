@@ -1,8 +1,10 @@
-.player-list{
+.player-list-row{
    // width: 34%;
+   height: 100%;
+   padding-bottom: 0.4rem;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: space-around;
-
+   margin-top: 0.45rem;
 }

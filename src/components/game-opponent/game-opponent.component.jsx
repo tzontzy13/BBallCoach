@@ -8,9 +8,9 @@ const GameOpponent = () => {
 
    return (
       <div className="opponent">
-         <CustomButton>+1</CustomButton>
-         <CustomButton>+2</CustomButton>
-         <CustomButton>+3</CustomButton>
+         <CustomButton inverted>+1</CustomButton>
+         <CustomButton inverted>+2</CustomButton>
+         <CustomButton inverted>+3</CustomButton>
       </div>
    )
 }

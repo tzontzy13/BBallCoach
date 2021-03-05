@@ -6,11 +6,16 @@ import { connect } from 'react-redux'
 
 import PlayerCard from '../player-card/player-card.component'
 
-const PlayerList = ({ players }) => {
+const PlayerList = ({ players, sub }) => {
 
    return (
-      <div className='player-list'>
-         {players.map(player => <PlayerCard key={player.playerNumber} player={player} />)}
+      <div className='player-list-row'>
+         {players
+            ?
+            players.map(player => <PlayerCard key={player.playerNumber} player={player} sub={sub} />)
+            :
+            null
+         }
       </div>
    )
 }

@@ -2,6 +2,8 @@
    display: flex;
    flex-direction: row;
    justify-content: space-evenly;
+   border: 1px solid rgba(0,0,0,0.15);
+   background-color: black;
 
    .custom-button{
       width: 31%;

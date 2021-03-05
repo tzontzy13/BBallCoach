@@ -9,3 +9,11 @@ export const setBench = (bench) => ({
    type: GameActionTypes.SET_BENCH,
    payload: bench
 })
+
+export const toggleTimeRunning = () => ({
+   type: GameActionTypes.TOGGLE_TIME_RUNNING
+})
+
+export const togglePossession = () => ({
+   type: GameActionTypes.TOGGLE_POSSESSION
+})

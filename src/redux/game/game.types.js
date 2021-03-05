@@ -1,6 +1,8 @@
 const GameActionTypes = {
    ADD_PLAYER_TO_5: 'ADD_PLAYER_TO_5',
-   SET_BENCH: 'SET_BENCH'
+   SET_BENCH: 'SET_BENCH',
+   TOGGLE_TIME_RUNNING: 'TOGGLE_TIME_RUNNING',
+   TOGGLE_POSSESSION: 'TOGGLE_POSSESSION'
 }
 
 export default GameActionTypes

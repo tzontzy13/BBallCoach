@@ -1,7 +1,23 @@
 .player-card{
-   width: 13rem;
-   height: 3rem;
-   border: 1px solid black;
-   margin-bottom: 3px;
+   // min-width: 6rem;
+   width: 6rem;
+   min-height: 4rem;
+   border: 1px solid rgba(0,0,0,0.2);
+   margin-bottom: 0.5rem;
    text-align: center;
+   background-color: rgb(255, 216, 174);
+   color: black;
+   
+   .player-card-data{
+      margin-bottom: 0rem;
+      padding-top: 0.4rem;
+   }
+
+   .player-card-btn{
+      margin-bottom: 0.4rem;
+   }
+}
+
+.selected{
+   background-color: red;
 }

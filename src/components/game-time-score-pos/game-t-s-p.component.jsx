@@ -1,16 +1,21 @@
 import React from 'react'
 
-import GameTime from '../game-time/game-time.component'
+import './game-t-s-p.styles.scss'
 
-const TimeScorePos = ({ prop }) => {
+import GameTime from '../game-time/game-time.component'
+import GamePossession from '../game-possession/game-possession.component'
+
+const TimeScorePos = () => {
 
    return (
       <div className="time-score-pos">
-         <div className="possesion">Possesion: HOME</div>
-         <div className="time">
-            <GameTime prop={prop} />
+         <div className='possession'>
+            <GamePossession />
          </div>
-         <div className="score">HOME 107 - 103 AWAY</div>
+         <div className="time">
+            <GameTime />
+         </div>
+         <h3 className="score">HOME 0 - 0 AWAY</h3>
       </div>
    )
 }
