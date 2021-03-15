@@ -17,9 +17,9 @@ const Court = ({ possession }) => {
          {
             possession
                ?
-               <CourtO />
-               :
                <CourtD />
+               :
+               <CourtO />
          }
       </div>
 

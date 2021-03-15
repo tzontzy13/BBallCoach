@@ -21,12 +21,6 @@ const GamePage = () => {
          <TimeScorePos />
          <GameOpponent />
          <Logo />
-         {/* {possession
-            ?
-            <CourtD />
-            :
-            <CourtO />
-         } */}
          <Court />
       </div>
    )

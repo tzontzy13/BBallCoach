@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './team-select.styles.scss'
 
 import { connect } from 'react-redux'
+import { setBench } from '../../redux/game/game.actions'
 import { withRouter } from 'react-router-dom'
 
 import PlayerList from '../player-list/player-list.component'
 import CustomButton from '../custom-button/custom-button.component'
 import PlayerAdd from '../player-add/player-add.component'
 
-const TeamSelect = ({ players, history }) => {
+const TeamSelect = ({ players, history, starting, setBench }) => {
+
+   useEffect(() => {
+      setBench(players)
+   }, [])
+
+   const handleStart = () => {
+      if (starting.length === 5) {
+         history.push('/team/game')
+      } else {
+         alert('You need 5 players to start the game')
+      }
+   }
 
    return (
       <div className='team-select'>
@@ -17,13 +30,18 @@ const TeamSelect = ({ players, history }) => {
             <PlayerList players={players} />
          </div>
          <PlayerAdd />
-         <CustomButton onClick={() => history.push('/team/game')}>Start game</CustomButton>
+         <CustomButton onClick={() => handleStart()}>Start game</CustomButton>
       </div>
    )
 }
 
-const mapStateToProps = (state) => ({
-   players: state.team.players
+const mapDispatchToProps = (dispatch) => ({
+   setBench: (bench) => dispatch(setBench(bench))
 })
 
-export default withRouter(connect(mapStateToProps)(TeamSelect))
+const mapStateToProps = (state) => ({
+   players: state.team.players,
+   starting: state.game.starting
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TeamSelect))

@@ -1,25 +1,55 @@
 import React from 'react'
 
 import './game-current.styles.scss'
+import useKeypress from 'react-use-keypress'
 
 import { connect } from 'react-redux'
 
-import { selectStarting } from '../../redux/game/game.selectors'
+import { selectStarting, selectSelected } from '../../redux/game/game.selectors'
+import { selectPlayer } from '../../redux/game/game.actions'
 
 import PlayerList from '../player-list/player-list.component'
 
-const GameCurrent = ({ starting }) => {
+const GameCurrent = ({ starting, selectedPlayer, selectPlayer }) => {
+
+   useKeypress(['1', '2', '3', '4', '5'], (event) => {
+      if (event.key === '1') {
+         // console.log('1 pressed')
+         selectPlayer(0)
+      }
+      if (event.key === '2') {
+         // console.log('2 pressed')
+         selectPlayer(1)
+      }
+      if (event.key === '3') {
+         // console.log('3 pressed')
+         selectPlayer(2)
+      }
+      if (event.key === '4') {
+         // console.log('4 pressed')
+         selectPlayer(3)
+      }
+      if (event.key === '5') {
+         // console.log('5 pressed')
+         selectPlayer(4)
+      }
+   })
 
    return (
       <div className="current">
          <h5>Current:</h5>
-         <PlayerList players={starting} sub />
+         <PlayerList players={starting} sub selectedPlayer={selectedPlayer} />
       </div>
    )
 }
 
 const mapStateToProps = (state) => ({
-   starting: selectStarting(state)
+   starting: selectStarting(state),
+   selectedPlayer: selectSelected(state)
 })
 
-export default connect(mapStateToProps)(GameCurrent)
+const mapDispatchToProps = (dispatch) => ({
+   selectPlayer: (playerPos) => dispatch(selectPlayer(playerPos))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameCurrent)

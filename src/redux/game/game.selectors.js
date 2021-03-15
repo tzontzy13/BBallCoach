@@ -21,3 +21,8 @@ export const selectPossession = createSelector(
    [selectGame],
    game => game.possession
 )
+
+export const selectSelected = createSelector(
+   [selectGame],
+   game => game.selected
+)

@@ -1,8 +1,16 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
+
 import './player-card.styles.scss'
 
-const PlayerCard = ({ player, sub, selected }) => {
+import { subPlayers } from '../../redux/game/game.actions'
+
+const PlayerCard = ({ player, sub, selected, bench, subPlayers }) => {
+
+   const handleClick = (benchP) => {
+      subPlayers(player, benchP)
+   }
 
    return (
       <div className={`${selected ? 'selected' : ''} player-card `}>
@@ -15,13 +23,10 @@ const PlayerCard = ({ player, sub, selected }) => {
                      Sub
                   </button>
                   <ul className="dropdown-menu">
-                     <button className="dropdown-item" type="button">P1</button>
-                     <button className="dropdown-item" type="button">P2</button>
-                     <button className="dropdown-item" type="button">P3</button>
-                     <button className="dropdown-item" type="button">P4</button>
-                     <button className="dropdown-item" type="button">P5</button>
-                     <button className="dropdown-item" type="button">P6</button>
-                     <button className="dropdown-item" type="button">P7</button>
+                     {bench.map(benchP =>
+                        <button onClick={() => handleClick(benchP)} className="dropdown-item" type="button" key={benchP.playerNumber}>
+                           {benchP.playerName}
+                        </button>)}
                   </ul>
                </div>
                :
@@ -31,4 +36,12 @@ const PlayerCard = ({ player, sub, selected }) => {
    )
 }
 
-export default PlayerCard
+const mapStateToProps = state => ({
+   bench: state.game.bench
+})
+
+const mapDispatchToProps = dispatch => ({
+   subPlayers: (playerOut, playerIn) => dispatch(subPlayers(playerOut, playerIn))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerCard)

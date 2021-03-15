@@ -12,7 +12,7 @@ import gameReducer from './game/game.reducer'
 const persistConfig = {
    key: 'root',
    storage,
-   whitelist: ['cart']
+   whitelist: []
 }
 
 const rootReducer = combineReducers({

@@ -6,8 +6,8 @@ import { connect } from 'react-redux'
 
 import { withRouter, Route } from 'react-router-dom'
 
-import TeamOptions from '../../components/team-options/team-options.component'
-import TeamSelect from '../../components/team-select/team-select.component'
+import TeamOptionsContainer from '../../components/team-options/team-options.container'
+import TeamSelectContainer from '../../components/team-select/team-select.container'
 import GamePage from '../game/game-page.component'
 
 import { fetchTeamStart } from '../../redux/team/team.actions'
@@ -21,13 +21,14 @@ const TeamPage = ({ fetchTeamStart, match }) => {
    return (
       <div className='team-page'>
          <Route
+            exact
             path={`${match.path}/select`}
-            component={TeamSelect}
+            component={TeamSelectContainer}
          />
          <Route
             exact
             path={`${match.path}`}
-            component={TeamOptions}
+            component={TeamOptionsContainer}
          />
          <Route
             exact

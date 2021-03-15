@@ -16,8 +16,8 @@ export function* fetchTeamAsync() {
 
       yield put(fetchTeamSuccess(collectionsMap))
 
-      let bench = [...collectionsMap.players]
-      yield put(setBench(bench))
+      // let bench = [...collectionsMap.players]
+      // yield put(setBench(bench))
    } catch (err) {
       // console.log(err)
       yield put(fetchTeamFailure(err.message))

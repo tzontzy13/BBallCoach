@@ -4,6 +4,7 @@ import './game-t-s-p.styles.scss'
 
 import GameTime from '../game-time/game-time.component'
 import GamePossession from '../game-possession/game-possession.component'
+import GameScore from '../game-score/game-score.component'
 
 const TimeScorePos = () => {
 
@@ -15,7 +16,9 @@ const TimeScorePos = () => {
          <div className="time">
             <GameTime />
          </div>
-         <h3 className="score">HOME 0 - 0 AWAY</h3>
+         <h3 className="score">
+            <GameScore />
+         </h3>
       </div>
    )
 }

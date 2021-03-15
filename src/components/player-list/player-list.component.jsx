@@ -6,13 +6,15 @@ import { connect } from 'react-redux'
 
 import PlayerCard from '../player-card/player-card.component'
 
-const PlayerList = ({ players, sub }) => {
+const PlayerList = ({ players, sub, selectedPlayer }) => {
 
    return (
       <div className='player-list-row'>
          {players
             ?
-            players.map(player => <PlayerCard key={player.playerNumber} player={player} sub={sub} />)
+            players.map(player =>
+               <PlayerCard key={player.playerNumber} player={player} sub={sub} selected={selectedPlayer === player.playerNumber} />
+            )
             :
             null
          }
@@ -20,4 +22,8 @@ const PlayerList = ({ players, sub }) => {
    )
 }
 
-export default connect()(PlayerList)
+const mapStateToProps = (state) => ({
+
+})
+
+export default connect(mapStateToProps)(PlayerList)

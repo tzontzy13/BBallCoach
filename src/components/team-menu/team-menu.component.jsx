@@ -1,17 +1,24 @@
 import React from 'react'
+import './team-menu.styles.scss'
+
+import { connect } from 'react-redux'
+
 
 import { withRouter } from 'react-router-dom'
 
-import './team-menu.styles.scss'
-
 import CustomButton from '../custom-button/custom-button.component'
 
-const TeamMenu = ({ history, match }) => {
+const TeamMenu = ({ history, match, setBench }) => {
+
+   const handleNewGame = () => {
+      history.push(`${match.path}/select`)
+   }
+
    return (
       <div className='team-menu'>
          <h3 className='team-menu-title'>Welcome to your team</h3>
          <div className='team-menu-elements'>
-            <CustomButton type='button' onClick={() => history.push(`${match.path}/select`)}>
+            <CustomButton type='button' onClick={() => handleNewGame()}>
                New game
             </CustomButton>
             <CustomButton type='button'>
@@ -25,4 +32,4 @@ const TeamMenu = ({ history, match }) => {
    )
 }
 
-export default withRouter(TeamMenu)
+export default connect()(withRouter(TeamMenu))
