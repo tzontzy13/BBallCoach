@@ -3,21 +3,22 @@ import { all, takeLatest, call, put } from 'redux-saga/effects'
 import { firestore, auth, convertCollectionsSnapshotToList } from '../../firebase/firebase.utils'
 
 import { fetchTeamSuccess, fetchTeamFailure } from './team.actions'
-import { setBench } from '../game/game.actions'
 
 import TeamActionTypes from './team.types'
 
 export function* fetchTeamAsync() {
 
    try {
-      const teamRef = firestore.collection('users').doc(auth.currentUser.uid).collection('team')
-      const snapshot = yield teamRef.get()
-      const collectionsMap = yield call(convertCollectionsSnapshotToList, snapshot)
+      const userRef = firestore.collection('users').doc(auth.currentUser.uid)
+      //.collection('team')
+      const snapshot = yield userRef.get()
 
-      yield put(fetchTeamSuccess(collectionsMap))
+      const teamData = yield snapshot.data().team
 
-      // let bench = [...collectionsMap.players]
-      // yield put(setBench(bench))
+      // const collectionsMap = yield call(convertCollectionsSnapshotToList, snapshot)
+
+      yield put(fetchTeamSuccess(teamData))
+
    } catch (err) {
       // console.log(err)
       yield put(fetchTeamFailure(err.message))

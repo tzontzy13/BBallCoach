@@ -5,14 +5,16 @@ import './team-creation.styles.scss'
 import { connect } from 'react-redux'
 import { selectPlayers } from '../../redux/team/team.selectors'
 
+import { withRouter } from 'react-router-dom'
+
 import FormInput from '../form-input/form-input.component'
 import CustomButton from '../custom-button/custom-button.component'
 import CreatePlayer from '../create-player/create-player.component'
 import PlayerList from '../player-list/player-list.component'
 
-import { addCollectionAndDocumentsToUser } from '../../firebase/firebase.utils'
+import { addCollectionAndDocumentsToUser2, auth } from '../../firebase/firebase.utils'
 
-const TeamCreation = ({ players }) => {
+const TeamCreation = ({ players, history }) => {
 
    const [teamName, setTeamName] = useState('')
 
@@ -24,7 +26,17 @@ const TeamCreation = ({ players }) => {
 
    const handleSubmit = (e) => {
       e.preventDefault()
-      // addCollectionAndDocumentsToUser('users', '01BUXwyoPfSC4iP6TEq7Z6RVur62', players, teamName)
+
+      if (players.length !== 12 || teamName === '') {
+         alert("You need 12 players and a name")
+      } else {
+         addCollectionAndDocumentsToUser2('users', auth.currentUser.uid, players, teamName)
+            .then(
+               () => {
+                  history.push('/team')
+               })
+            .catch(err => console.log(err))
+      }
    }
 
    return (
@@ -57,4 +69,4 @@ const mapStateToProps = (state) => ({
    players: selectPlayers(state)
 })
 
-export default connect(mapStateToProps)(TeamCreation)
+export default connect(mapStateToProps)(withRouter(TeamCreation))

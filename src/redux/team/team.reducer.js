@@ -1,6 +1,6 @@
 import TeamActionTypes from './team.types'
 
-import { addPlayerToTeam } from './team.utils'
+import { addPlayerToTeam, removePlayerFromTeam } from './team.utils'
 
 const INITIAL_STATE = {
    teamName: '',
@@ -16,6 +16,13 @@ const teamReducer = (state = INITIAL_STATE, action) => {
          return {
             ...state,
             players: addPlayerToTeam(state.players, action.payload)
+         }
+
+      case TeamActionTypes.REMOVE_PLAYER:
+         const updatedTeam = removePlayerFromTeam(state.players, action.payload)
+         return {
+            ...state,
+            players: updatedTeam
          }
 
       case TeamActionTypes.FETCH_TEAM_START:

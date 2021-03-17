@@ -89,6 +89,8 @@ export const shot = (madeOrMiss, position, assistBy, selected, starting, homeSco
             const newPlayer = {
                ...playerWhoShot, stats: {
                   ...playerWhoShot.stats,
+                  fg: playerWhoShot.stats.fg + 1,
+                  fga: playerWhoShot.stats.fga + 1,
                   p3a: playerWhoShot.stats.p3a + 1,
                   p3: playerWhoShot.stats.p3 + 1,
                   pts: playerWhoShot.stats.pts + 3
@@ -141,6 +143,8 @@ export const shot = (madeOrMiss, position, assistBy, selected, starting, homeSco
             const newPlayer = {
                ...playerWhoShot, stats: {
                   ...playerWhoShot.stats,
+                  fg: playerWhoShot.stats.fg + 1,
+                  fga: playerWhoShot.stats.fga + 1,
                   p3a: playerWhoShot.stats.p3a + 1,
                   p3: playerWhoShot.stats.p3 + 1,
                   pts: playerWhoShot.stats.pts + 3
@@ -176,6 +180,27 @@ export const shot = (madeOrMiss, position, assistBy, selected, starting, homeSco
          }
       }
    }
+}
+
+export const finishStats = players => {
+
+   const finalStats = players.map(player => {
+
+      const newPlayer = {
+         ...player,
+         stats: {
+            ...player.stats,
+            fgp: (player.stats.fg / player.stats.fga).toFixed(3),
+            p3p: (player.stats.p3 / player.stats.p3a).toFixed(3),
+            ftp: (player.stats.ft / player.stats.fta).toFixed(3),
+            trb: player.stats.orb + player.stats.drb,
+         }
+      }
+
+      return newPlayer
+   })
+
+   return finalStats
 }
 
 export const addDFoul = (starting, selected) => {

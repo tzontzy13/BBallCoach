@@ -51,12 +51,23 @@ export const addCollectionAndDocumentsToUser = async (collectionKey, userKey, ob
    batch.set(teamNameRef, { teamName })
 
    objectsToAdd.forEach(obj => {
-      const newDocRef = userRef.doc()
+      const newDocRef = userRef.doc(`player${obj.playerName}`)
       batch.set(newDocRef, obj)
    })
 
    return await batch.commit()
 
+}
+
+export const addCollectionAndDocumentsToUser2 = async (collectionKey, userKey, objectsToAdd, teamName) => {
+   const userRef = firestore.collection(collectionKey).doc(userKey)
+
+   return await userRef
+      .update(
+         { 'team': { 'players': objectsToAdd, 'teamName': teamName } }
+      )
+      .then()
+      .catch(err => console.log(err))
 }
 
 export const convertCollectionsSnapshotToMap = (collections) => {

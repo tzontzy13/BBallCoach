@@ -1,6 +1,6 @@
 import GameActionTypes from './game.types'
 
-import { addPlayerTo5, setInitialStats, setPlayingTime, resetPlayingTime, subPlayers, addBlock, addSteal, addDReb, addDFoul, addOReb, addOFoul, addTov, opponentScore, shot } from './game.utils'
+import { addPlayerTo5, setInitialStats, setPlayingTime, resetPlayingTime, subPlayers, addBlock, addSteal, addDReb, addDFoul, addOReb, addOFoul, addTov, opponentScore, shot, finishStats } from './game.utils'
 
 const INITIAL_STATE = {
    starting: [],
@@ -46,7 +46,9 @@ const INITIAL_STATE = {
    selected: '',
    possession: 0,
    timeRunning: 10000,
-   quarter: 1
+   clockPaused: true,
+   quarter: 1,
+   finalBoxScore: null
 }
 
 const gameReducer = (state = INITIAL_STATE, action) => {
@@ -79,10 +81,17 @@ const gameReducer = (state = INITIAL_STATE, action) => {
       case GameActionTypes.SET_TIME:
          if (action.payload === 0) {
             if (state.quarter === 4) {
+               const newStartingTime = setPlayingTime(state.starting, action.payload)
+
+               const allPlayersStats = newStartingTime.concat(state.bench)
+
+               const finalScoreBoard = finishStats(allPlayersStats)
+
                return {
                   ...state,
                   timeRunning: 0,
-                  starting: setPlayingTime(state.starting, action.payload)
+                  starting: newStartingTime,
+                  finalBoxScore: finalScoreBoard
                }
             } else {
                return {

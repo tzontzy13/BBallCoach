@@ -6,5 +6,11 @@ export const addPlayerToTeam = (players, playerToAdd) => {
    }
 
    return [...players, playerToAdd]
+}
 
+export const removePlayerFromTeam = (players, playerToRemove) => {
+
+   const updatedTeam = players.filter(player => player.playerNumber !== playerToRemove)
+
+   return updatedTeam
 }

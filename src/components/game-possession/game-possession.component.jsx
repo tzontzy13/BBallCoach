@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { selectPossession } from '../../redux/game/game.selectors'
 import { togglePossession } from '../../redux/game/game.actions'
 
-const GamePossession = ({ possession, togglePossession }) => {
+const GamePossession = ({ possession, togglePossession, teamName }) => {
 
    useKeypress(['g'], (event) => {
       if (event.key === 'g') {
@@ -24,7 +24,7 @@ const GamePossession = ({ possession, togglePossession }) => {
                </h3>
                :
                <h3>
-                  Possession: HOME
+                  Possession: {teamName.toUpperCase()}
                </h3>
          }
       </div>
@@ -32,7 +32,8 @@ const GamePossession = ({ possession, togglePossession }) => {
 }
 
 const mapStateToProps = (state) => ({
-   possession: selectPossession(state)
+   possession: selectPossession(state),
+   teamName: state.team.teamName,
 })
 
 const mapDispatchToProps = (dispatch) => ({

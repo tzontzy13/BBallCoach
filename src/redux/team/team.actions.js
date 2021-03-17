@@ -5,6 +5,11 @@ export const addPlayer = (player) => ({
    payload: player
 })
 
+export const removePlayer = (player) => ({
+   type: TeamActionTypes.REMOVE_PLAYER,
+   payload: player
+})
+
 export const fetchTeamStart = () => ({
    type: TeamActionTypes.FETCH_TEAM_START,
 })

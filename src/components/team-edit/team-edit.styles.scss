@@ -1,0 +1,31 @@
+.team-edit {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-template-rows: auto auto auto;
+   gap: 0px 0px;
+   grid-template-areas:
+     "player-list-row player-list-row player-list-row player-list-row"
+     "create-player create-player remove-player remove-player"
+     ". custom-button custom-button .";
+ }
+ 
+.player-list-row {
+   grid-area: player-list-row;
+}
+ 
+.create-player {
+   grid-area: create-player;
+   padding-bottom: 1rem;
+   margin-right: 1rem;
+}
+ 
+.remove-player {
+   grid-area: remove-player;
+   margin-left: 1rem;
+   padding-bottom: 1rem;
+}
+ 
+.custom-button {
+   grid-area: custom-button;
+   margin-top: 1rem;
+}
