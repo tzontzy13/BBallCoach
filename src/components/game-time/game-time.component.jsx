@@ -55,7 +55,9 @@ const GameTime = ({ setTime, quarter }) => {
 const renderer = ({ minutes, seconds, milliseconds, completed, props }) => {
    if (completed) {
       // Render a completed state
-      return <h2>Final</h2>
+      return (<div>
+         <h2>Final</h2>
+      </div>)
    } else {
       // Render a countdown
       return <h2>Q{props.quarter} - {minutes}:{seconds}:{milliseconds / 100}</h2>;

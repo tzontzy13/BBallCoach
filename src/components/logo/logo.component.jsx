@@ -1,8 +1,13 @@
 import React from 'react'
-
 import './logo.styles.scss'
 
-const Logo = () => {
+import { connect } from 'react-redux'
+
+import CustomButton from '../custom-button/custom-button.component'
+
+import { saveGameBoxScoreToUser } from '../../firebase/firebase.utils'
+
+const Logo = ({ boxScore }) => {
 
    const bgurl = '/logo.png'
 
@@ -14,8 +19,27 @@ const Logo = () => {
                backgroundImage: `url(${bgurl})`
             }}
          />
+         {boxScore
+            ?
+            <div className='boxScoreContainer'>
+               <CustomButton
+                  onClick={
+                     () => saveGameBoxScoreToUser('users', '01BUXwyoPfSC4iP6TEq7Z6RVur62', boxScore)
+                  }
+                  inverted
+               >
+                  boxScore
+               </CustomButton>
+            </div>
+            :
+            null
+         }
       </div>
    )
 }
 
-export default Logo
+const mapStateToProps = state => ({
+   boxScore: state.game.finalBoxScore
+})
+
+export default connect(mapStateToProps)(Logo)

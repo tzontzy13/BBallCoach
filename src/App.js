@@ -10,7 +10,6 @@ import SignInUp from './pages/sign-in-up/sign-in-up.component'
 import CheckoutPage from './pages/checkout/checkout.component'
 import WelcomePage from './pages/welcome/welcome.component'
 import TeamPage from './pages/team/team.component'
-import GamePage from './pages/game/game-page.component'
 
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -28,26 +27,25 @@ const App = ({ checkUserSession, currentUser }) => {
       <div className="App" >
          <Header />
          <Switch>
-            <Route exact path='/homepage' component={HomePage} />
+            {/* <Route exact path='/homepage' component={HomePage} />
             <Route path='/shop' component={ShopPage} />
-            <Route exact path='/checkout' component={CheckoutPage} />
+            <Route exact path='/checkout' component={CheckoutPage} /> */}
+            <Route
+               exact
+               path='/'
+               component={WelcomePage}
+            />
             <Route
                exact
                path='/signin'
                render={() => currentUser ? (<Redirect to='/' />) : (<SignInUp />)}
             />
-            <Route exact path='/' component={WelcomePage} />
-            {
-               currentUser
-                  ?
-                  (
-                     <Route path='/team' component={TeamPage} />
-                  )
-                  :
-                  (
-                     <Redirect to='/signin' />
-                  )
-            }
+            <Route
+               // exact
+               path='/team'
+               render={() => currentUser ? <TeamPage /> : <Redirect to='/signin' />}
+
+            />
          </Switch>
       </div>
    );

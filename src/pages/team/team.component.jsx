@@ -23,13 +23,13 @@ const TeamPage = ({ fetchTeamStart, match }) => {
       <div className='team-page'>
          <Route
             exact
-            path={`${match.path}/select`}
-            component={TeamSelectContainer}
+            path={`${match.path}`}
+            component={TeamOptionsContainer}
          />
          <Route
             exact
-            path={`${match.path}`}
-            component={TeamOptionsContainer}
+            path={`${match.path}/select`}
+            component={TeamSelectContainer}
          />
          <Route
             exact

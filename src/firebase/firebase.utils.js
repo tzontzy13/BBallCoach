@@ -70,6 +70,21 @@ export const addCollectionAndDocumentsToUser2 = async (collectionKey, userKey, o
       .catch(err => console.log(err))
 }
 
+export const saveGameBoxScoreToUser = async (collectionKey, userKey, boxScore) => {
+   const userRef = firestore.collection(collectionKey).doc(userKey)
+
+   const createdAt = new Date()
+
+   const newGame = { finishedAt: createdAt, boxScore: boxScore }
+
+   return await userRef
+      .update(
+         { 'games': firebase.firestore.FieldValue.arrayUnion(newGame) }
+      )
+      .then()
+      .catch(err => console.log(err))
+}
+
 export const convertCollectionsSnapshotToMap = (collections) => {
    const transformedCollection = collections.docs.map(doc => {
       const { title, items } = doc.data()

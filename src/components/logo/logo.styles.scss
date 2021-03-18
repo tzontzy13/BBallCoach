@@ -4,10 +4,19 @@
    border: 1px solid rgba(0,0,0,0.15); 
 
    .logoo-logo{
+      // position: absolute;
+      // z-index: -100;
       height: 100%;
       width: auto;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      z-index: 1;
+   }
+
+   .boxScoreContainer{
+      position: relative;
+      // right: 100px;
+      bottom: 90px;
    }
 }
