@@ -24,7 +24,7 @@ const TeamMenu = ({ history, match, setBench }) => {
             <CustomButton type='button' onClick={() => history.push(`${match.path}/edit`)}>
                Edit team
             </CustomButton>
-            <CustomButton type='button'>
+            <CustomButton type='button' onClick={() => history.push(`${match.path}/history`)}>
                Game history
             </CustomButton>
          </div>

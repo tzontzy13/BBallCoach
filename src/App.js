@@ -44,7 +44,6 @@ const App = ({ checkUserSession, currentUser }) => {
                // exact
                path='/team'
                render={() => currentUser ? <TeamPage /> : <Redirect to='/signin' />}
-
             />
          </Switch>
       </div>

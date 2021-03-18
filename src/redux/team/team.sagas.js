@@ -14,6 +14,8 @@ export function* fetchTeamAsync() {
       const snapshot = yield userRef.get()
 
       const teamData = yield snapshot.data().team
+      const gameData = yield snapshot.data().games
+      // console.log(gameData)
 
       // const collectionsMap = yield call(convertCollectionsSnapshotToList, snapshot)
 

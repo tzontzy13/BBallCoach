@@ -10,6 +10,7 @@ import TeamOptionsContainer from '../../components/team-options/team-options.con
 import TeamSelectContainer from '../../components/team-select/team-select.container'
 import TeamEdit from '../../components/team-edit/team-edit.component'
 import GamePage from '../game/game-page.component'
+import HistoryPage from '../history/history.component'
 
 import { fetchTeamStart } from '../../redux/team/team.actions'
 
@@ -40,6 +41,15 @@ const TeamPage = ({ fetchTeamStart, match }) => {
             exact
             path={`${match.path}/edit`}
             component={TeamEdit}
+         />
+         <Route
+            exact
+            path={`${match.path}/history`}
+            component={HistoryPage}
+         />
+         <Route
+            path={`${match.path}/history/:date`}
+            render={() => <p>boxScore</p>}
          />
       </div>
    )
