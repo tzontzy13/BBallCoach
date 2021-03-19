@@ -1,0 +1,26 @@
+.history-page{
+
+   display: flex;
+   flex-direction: column;
+
+   .history-page-header{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .history-page-btn{
+         position: relative;
+         right: 34%;
+         bottom: 1rem;
+      }
+   }
+
+   .history-page-list{
+      .list-group{
+         .list-group-item{
+            min-height: 4rem;
+         }
+      }
+   }
+}

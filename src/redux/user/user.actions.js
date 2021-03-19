@@ -50,3 +50,13 @@ export const signUpFailure = (error) => ({
    type: UserActionTypes.SIGN_UP_FAILURE,
    payload: error
 })
+
+export const setCurrentUser = user => ({
+   type: UserActionTypes.SET_CURRENT_USER,
+   payload: user
+});
+
+export const setChecked = (bool) => ({
+   type: UserActionTypes.NO_USER,
+   payload: bool
+})

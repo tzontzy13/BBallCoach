@@ -10,7 +10,8 @@ import {
    signOutSuccess,
    signOutFailure,
    signUpSuccess,
-   signUpFailure
+   signUpFailure,
+   setChecked
 } from './user.actions'
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
@@ -44,7 +45,9 @@ export function* signInWithEmail({ payload: { email, password } }) {
 export function* isUserAuthenticated() {
    try {
       const userAuth = yield getCurrentUser()
-      if (!userAuth) return;
+      if (!userAuth) {
+         return yield put(setChecked(true))
+      }
       yield getSnapshotFromUserAuth(userAuth)
    } catch (err) {
       yield put(signInFailure(err))
