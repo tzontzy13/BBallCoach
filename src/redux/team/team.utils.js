@@ -1,5 +1,5 @@
 export const addPlayerToTeam = (players, playerToAdd) => {
-   const existingPlayer = players.find(player => player.playerNumber === playerToAdd.playerNumber)
+   const existingPlayer = players ? players.find(player => player.playerNumber === playerToAdd.playerNumber) : undefined
 
    if (existingPlayer) {
       return players

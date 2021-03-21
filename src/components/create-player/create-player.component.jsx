@@ -28,7 +28,7 @@ const CreatePlayer = ({ addPlayer, players }) => {
       event.preventDefault()
 
 
-      const existingPlayer = players.find(player => player.playerNumber === playerNumber)
+      const existingPlayer = players ? players.find(player => player.playerNumber === playerNumber) : undefined
 
       if (existingPlayer) {
          alert('Player number taken')

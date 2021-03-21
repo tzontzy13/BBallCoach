@@ -1,4 +1,5 @@
-import { all, takeLatest, call, put } from 'redux-saga/effects'
+import { eventChannel } from '@redux-saga/core'
+import { all, takeLatest, call, put, take } from 'redux-saga/effects'
 
 import { firestore, auth, convertCollectionsSnapshotToList } from '../../firebase/firebase.utils'
 
@@ -8,37 +9,32 @@ import TeamActionTypes from './team.types'
 
 export function* fetchTeamAsync() {
 
-   try {
-      const userRef = firestore.collection('users').doc(auth.currentUser.uid)
-      //.collection('team')
-      const snapshot = yield userRef.get()
+   const userRef = firestore.collection('users').doc(auth.currentUser.uid)
 
-      const teamData = yield snapshot.data().team
-      const gameData = yield snapshot.data().games
-      // console.log(gameData)
+   try {
+      // const snapshot = yield userRef.get()
+
+      // const teamData = yield snapshot.data().team
+      // const gameData = yield snapshot.data().games
 
       // const collectionsMap = yield call(convertCollectionsSnapshotToList, snapshot)
 
-      yield put(fetchTeamSuccess(teamData))
+      // yield put(fetchTeamSuccess({ ...teamData, history: gameData }))
+
+
+      const channel = eventChannel(emit => userRef.onSnapshot(emit))
+      while (true) {
+         const data = yield take(channel)
+         const teamData = data.data().team
+         const gameData = data.data().games
+         yield put(fetchTeamSuccess({ ...teamData, history: gameData }))
+         // console.log(data.data())
+      }
 
    } catch (err) {
       // console.log(err)
       yield put(fetchTeamFailure(err.message))
    }
-
-   // try {
-   //    const collectionRef = firestore.collection('collections')
-   //    const snapshot = yield collectionRef.get()
-   //    const collectionsMap = yield call(convertCollectionsSnapshotToMap, snapshot)
-   //    yield put(fetchCollectionsSuccess(collectionsMap))
-   // } catch (err) {
-   //    yield put(fetchCollectionsFailure(err.message))
-   // }
-
-   // collectionRef.get().then(snapshot => {
-   //    const collectionsMap = convertCollectionsSnapshotToMap(snapshot)
-   //    dispatch(fetchCollectionsSuccess(collectionsMap))
-   // }).catch(err => dispatch(fetchCollectionsFailure(err.message)))
 
 }
 

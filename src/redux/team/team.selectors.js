@@ -14,5 +14,5 @@ export const selectIsTeamFetching = createSelector(
 
 export const selectIsTeamLoaded = createSelector(
    [selectTeam],
-   team => !!team.teamName
+   team => !!team.players
 )

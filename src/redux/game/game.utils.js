@@ -200,7 +200,16 @@ export const finishStats = players => {
       return newPlayer
    })
 
+   const test = finalStats[0].stats
+
+   const teamTotals = finalStats.reduce((acc = test, curVal) => acc + curVal.stats)
+   console.log(teamTotals)
+
    return finalStats
+}
+
+export const calculateTeamTotals = (finalScoreboard) => {
+   console.log(finalScoreboard)
 }
 
 export const addDFoul = (starting, selected) => {

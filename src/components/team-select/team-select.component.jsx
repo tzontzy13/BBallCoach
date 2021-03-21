@@ -5,11 +5,13 @@ import { connect } from 'react-redux'
 import { setBench } from '../../redux/game/game.actions'
 import { withRouter } from 'react-router-dom'
 
+import { setOpponentName } from '../../redux/game/game.actions'
+
 import PlayerList from '../player-list/player-list.component'
 import CustomButton from '../custom-button/custom-button.component'
 import PlayerAdd from '../player-add/player-add.component'
 
-const TeamSelect = ({ players, history, starting, setBench }) => {
+const TeamSelect = ({ players, history, starting, setBench, setOpponentName }) => {
 
    useEffect(() => {
       setBench(players)
@@ -17,7 +19,11 @@ const TeamSelect = ({ players, history, starting, setBench }) => {
 
    const handleStart = () => {
       if (starting.length === 5) {
-         history.push('/team/game')
+         const opName = prompt('Opponent name:')
+         if (opName) {
+            setOpponentName(opName)
+            history.push('/team/game')
+         }
       } else {
          alert('You need 5 players to start the game')
       }
@@ -36,7 +42,8 @@ const TeamSelect = ({ players, history, starting, setBench }) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-   setBench: (bench) => dispatch(setBench(bench))
+   setBench: (bench) => dispatch(setBench(bench)),
+   setOpponentName: name => dispatch(setOpponentName(name))
 })
 
 const mapStateToProps = (state) => ({

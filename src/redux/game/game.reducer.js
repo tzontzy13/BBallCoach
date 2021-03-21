@@ -1,34 +1,10 @@
 import GameActionTypes from './game.types'
 
-import { addPlayerTo5, setInitialStats, setPlayingTime, resetPlayingTime, subPlayers, addBlock, addSteal, addDReb, addDFoul, addOReb, addOFoul, addTov, opponentScore, shot, finishStats } from './game.utils'
+import { addPlayerTo5, setInitialStats, setPlayingTime, resetPlayingTime, subPlayers, addBlock, addSteal, addDReb, addDFoul, addOReb, addOFoul, addTov, opponentScore, shot, finishStats, calculateTeamTotals } from './game.utils'
 
 const INITIAL_STATE = {
    starting: [],
    bench: [],
-   player: {
-      mp: 0,
-      fg: 0,
-      fga: 0,
-      fgp: 0,
-      p3: 0,
-      p3a: 0,
-      p3p: 0,
-      ft: 0,
-      fta: 0,
-      ftp: 0,
-      orb: 0,
-      drb: 0,
-      trb: 0,
-      ast: 0,
-      stl: 0,
-      blk: 0,
-      tov: 0,
-      pf: 0,
-      pts: 0,
-      plusMinus: 0,
-      subIn: 0,
-      subOut: 0
-   },
    homeScore: {
       total: 0,
       q1: 0,
@@ -41,7 +17,8 @@ const INITIAL_STATE = {
       q1: 0,
       q2: 0,
       q3: 0,
-      q4: 0
+      q4: 0,
+      awayTeamName: ''
    },
    selected: '',
    possession: 0,
@@ -66,6 +43,12 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             bench: setInitialStats(action.payload)
          }
 
+      case GameActionTypes.SET_OPPONENT_NAME:
+         return {
+            ...state,
+            awayScore: { ...state.awayScore, awayTeamName: action.payload }
+         }
+
       case GameActionTypes.TOGGLE_TIME_RUNNING:
          return {
             ...state,
@@ -87,6 +70,9 @@ const gameReducer = (state = INITIAL_STATE, action) => {
 
                const finalScoreBoard = finishStats(allPlayersStats)
 
+               // const test = calculateTeamTotals(finalScoreBoard)
+               // console.log(test)
+
                return {
                   ...state,
                   timeRunning: 0,
@@ -102,10 +88,15 @@ const gameReducer = (state = INITIAL_STATE, action) => {
                }
             }
          } else {
+            const newStartingTime = setPlayingTime(state.starting, action.payload)
+            const allPlayersStats = newStartingTime.concat(state.bench)
+            const finalScoreBoard = finishStats(allPlayersStats)
+
             return {
                ...state,
                timeRunning: action.payload,
-               starting: setPlayingTime(state.starting, action.payload)
+               starting: setPlayingTime(state.starting, action.payload),
+               finalBoxScore: finalScoreBoard
             }
          }
 

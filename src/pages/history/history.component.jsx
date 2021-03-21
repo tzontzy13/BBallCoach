@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './history.styles.scss'
 
 import { connect } from 'react-redux'
@@ -6,30 +6,48 @@ import { withRouter } from 'react-router-dom'
 
 import CustomButton from '../../components/custom-button/custom-button.component'
 
-const HistoryPage = ({ history, match }) => {
+const HistoryPage = ({ history, match, gameHistory }) => {
 
-   const handleClick = () => { history.push(`${match.path}/:13`) }
+   useEffect(() => {
+      // console.log(gameHistory)
+   })
+
+   const handleClick = (gameTime) => { history.push(`${match.path}/${gameTime}`) }
 
    return (
       <div className='history-page'>
          <div className='history-page-header'>
-            <div className='history-page-btn'>
+            {/* <div className='history-page-btn'>
                <CustomButton onClick={() => history.push('/team')}>Back</CustomButton>
-            </div>
+            </div> */}
             <h3 className='history-page-title'>Here is your game history:</h3>
          </div>
          <div className='history-page-list'>
             <ul className="list-group">
-               <li className="list-group-item" onClick={() => handleClick()}>first</li>
-               <li className="list-group-item">A second item</li>
-               <li className="list-group-item">A third item</li>
-               <li className="list-group-item">A fourth item</li>
-               <li className="list-group-item">And a fifth one</li>
+               {
+                  gameHistory ?
+                     gameHistory.map(game => {
+
+                        const gameTime = game.finishedAt.seconds
+                        var date = new Date(gameTime * 1000)
+
+                        return (
+                           <li className="list-group-item" key={game.finishedAt} onClick={() => handleClick(gameTime)}>
+                              <h3>VS {game.awayScore.awayTeamName}</h3>
+                              <p>{date.toDateString()} - SCORE: home {game.awayScore.total} - {game.homeScore.total} away</p>
+                           </li>
+                        )
+                     })
+                     : <h3>No games in history</h3>
+               }
             </ul>
          </div>
-
       </div>
    )
 }
 
-export default connect()(withRouter(HistoryPage))
+const mapStateToProps = (state) => ({
+   gameHistory: state.team.history
+})
+
+export default connect(mapStateToProps)(withRouter(HistoryPage))

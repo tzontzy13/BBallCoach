@@ -14,7 +14,8 @@ const GameActionTypes = {
    ADD_OFOUL: 'ADD_OFOUL',
    ADD_TOV: 'ADD_TOV',
    OPPONENT_SCORE: 'OPPONENT_SCORE',
-   SHOT: 'SHOT'
+   SHOT: 'SHOT',
+   SET_OPPONENT_NAME: 'SET_OPPONENT_NAME'
 }
 
 export default GameActionTypes

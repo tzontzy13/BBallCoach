@@ -6,7 +6,8 @@ const INITIAL_STATE = {
    teamName: '',
    players: [],
    isFetching: false,
-   errorMessage: undefined
+   errorMessage: undefined,
+   history: []
 }
 
 const teamReducer = (state = INITIAL_STATE, action) => {
@@ -36,7 +37,8 @@ const teamReducer = (state = INITIAL_STATE, action) => {
             ...state,
             isFetching: false,
             teamName: action.payload.teamName,
-            players: action.payload.players
+            players: action.payload.players,
+            history: action.payload.history
          }
 
       case TeamActionTypes.FETCH_TEAM_FAIL:

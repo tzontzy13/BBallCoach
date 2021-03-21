@@ -10,6 +10,11 @@ export const setBench = (bench) => ({
    payload: bench
 })
 
+export const setOpponentName = (name) => ({
+   type: GameActionTypes.SET_OPPONENT_NAME,
+   payload: name
+})
+
 export const toggleTimeRunning = () => ({
    type: GameActionTypes.TOGGLE_TIME_RUNNING
 })

@@ -8,12 +8,12 @@ import CustomButton from '../custom-button/custom-button.component'
 
 import { saveGameBoxScoreToUser } from '../../firebase/firebase.utils'
 
-const Logo = ({ boxScore, history }) => {
+const Logo = ({ boxScore, history, awayScore, homeScore }) => {
 
    const bgurl = '/logo.png'
 
    const handleSave = () => {
-      saveGameBoxScoreToUser('users', '01BUXwyoPfSC4iP6TEq7Z6RVur62', boxScore)
+      saveGameBoxScoreToUser('users', '01BUXwyoPfSC4iP6TEq7Z6RVur62', boxScore, homeScore, awayScore)
          .then(history.push('/team/history'))
          .catch(err => (console.log(err)))
    }
@@ -55,7 +55,9 @@ const Logo = ({ boxScore, history }) => {
 }
 
 const mapStateToProps = state => ({
-   boxScore: state.game.finalBoxScore
+   boxScore: state.game.finalBoxScore,
+   awayScore: state.game.awayScore,
+   homeScore: state.game.homeScore
 })
 
 export default connect(mapStateToProps)(withRouter(Logo))
