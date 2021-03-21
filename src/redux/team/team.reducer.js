@@ -5,7 +5,7 @@ import { addPlayerToTeam, removePlayerFromTeam } from './team.utils'
 const INITIAL_STATE = {
    teamName: '',
    players: [],
-   isFetching: false,
+   isFetching: true,
    errorMessage: undefined,
    history: []
 }

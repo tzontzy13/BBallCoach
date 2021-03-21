@@ -57,6 +57,6 @@ export const setCurrentUser = user => ({
 });
 
 export const setChecked = (bool) => ({
-   type: UserActionTypes.NO_USER,
+   type: UserActionTypes.USER_CHECKED,
    payload: bool
 })

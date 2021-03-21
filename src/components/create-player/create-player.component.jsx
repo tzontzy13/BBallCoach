@@ -28,17 +28,23 @@ const CreatePlayer = ({ addPlayer, players }) => {
       event.preventDefault()
 
 
-      const existingPlayer = players ? players.find(player => player.playerNumber === playerNumber) : undefined
+      // const existingPlayer = players.find(player => player.playerNumber === playerNumber)
 
-      if (existingPlayer) {
-         alert('Player number taken')
-      } else {
-         addPlayer({ playerName, playerNumber })
-         setPlayer({
-            playerName: '',
-            playerNumber: '',
-         })
-      }
+      // if (existingPlayer) {
+      //    alert('Player number taken')
+      // } else {
+      //    addPlayer({ playerName, playerNumber })
+      //    setPlayer({
+      //       playerName: '',
+      //       playerNumber: '',
+      //    })
+      // }
+
+      addPlayer({ playerName, playerNumber })
+      setPlayer({
+         playerName: '',
+         playerNumber: '',
+      })
    }
 
    return (

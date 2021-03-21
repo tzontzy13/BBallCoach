@@ -19,9 +19,9 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
          <Logo className='logo' />
       </Link>
       <div className='options'>
-         <Link className='option' to='/shop'>
+         {/* <Link className='option' to='/shop'>
             SHOP
-         </Link>
+         </Link> */}
          <Link className='option' to='/team'>
             TEAM
          </Link>
@@ -35,7 +35,7 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
                :
                <Link className='option' to='/signin'>SIGN IN</Link>
          }
-         <CartIcon />
+         {/* <CartIcon /> */}
       </div>
       {
          hidden ? null : <CartDropdown />

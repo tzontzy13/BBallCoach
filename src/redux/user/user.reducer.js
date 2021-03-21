@@ -39,7 +39,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             error: null
          }
 
-      case UserActionTypes.NO_USER:
+      case UserActionTypes.USER_CHECKED:
          return {
             ...state,
             wasChecked: action.payload

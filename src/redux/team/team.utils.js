@@ -3,9 +3,10 @@ export const addPlayerToTeam = (players, playerToAdd) => {
 
    if (existingPlayer) {
       return players
+   } else {
+      const test = players ? [...players, playerToAdd] : [playerToAdd]
+      return test
    }
-
-   return [...players, playerToAdd]
 }
 
 export const removePlayerFromTeam = (players, playerToRemove) => {

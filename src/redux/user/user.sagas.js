@@ -19,6 +19,7 @@ export function* getSnapshotFromUserAuth(userAuth, additionalData) {
       const userRef = yield call(createUserProfileDocument, userAuth, additionalData)
       const userSnapshot = yield userRef.get()
       yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }))
+      yield put(setChecked(true))
    } catch (err) {
       yield put(signInFailure(err))
    }

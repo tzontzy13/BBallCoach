@@ -22,7 +22,7 @@ const TeamOptions = ({ isTeamLoaded }) => {
 }
 
 const mapStateToProps = (state) => ({
-   isTeamLoaded: selectIsTeamLoaded(state)
+   isTeamLoaded: selectIsTeamLoaded(state),
 })
 
 export default connect(mapStateToProps)(TeamOptions)

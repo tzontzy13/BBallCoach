@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import './team.styles.scss'
 
 import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { createStructuredSelector } from 'reselect'
+import { selectIsTeamFetching } from '../../redux/team/team.selectors'
 
 import { withRouter, Route } from 'react-router-dom'
 
@@ -14,14 +17,9 @@ import TeamEdit from '../../components/team-edit/team-edit.component'
 import GamePage from '../game/game-page.component'
 import HistoryPage from '../history/history.component'
 import BoxScore from '../../components/box-score/box-score.component'
+import WithSpinner from '../../components/with-spinner/with-spinner.component'
 
-import { fetchTeamStart } from '../../redux/team/team.actions'
-
-const TeamPage = ({ fetchTeamStart, match }) => {
-
-   // useEffect(() => {
-   //    fetchTeamStart()
-   // }, [fetchTeamStart])
+const TeamPage = ({ match }) => {
 
    return (
       <div className='team-page'>
@@ -51,6 +49,7 @@ const TeamPage = ({ fetchTeamStart, match }) => {
             component={HistoryPage}
          />
          <Route
+            exact
             path={`${match.path}/history/:date`}
             component={BoxScore}
          />
@@ -58,8 +57,10 @@ const TeamPage = ({ fetchTeamStart, match }) => {
    )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-   fetchTeamStart: () => dispatch(fetchTeamStart())
+const mapStateToProps = createStructuredSelector({
+   isLoading: state => selectIsTeamFetching(state),
 })
 
-export default withRouter(connect(null, mapDispatchToProps)(TeamPage))
+const TeamWithSpinner = compose(connect(mapStateToProps), WithSpinner)(withRouter(TeamPage))
+
+export default TeamWithSpinner
