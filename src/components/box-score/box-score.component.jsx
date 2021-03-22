@@ -20,7 +20,6 @@ const BoxScore = ({ gameHistory, match, teamName }) => {
                ?
                <div>
                   <div className='box-score-teams'>
-                     <h3>{teamName.toUpperCase()} VS</h3>
                      <h3>{teamName.toUpperCase()} VS {filtered.awayScore.awayTeamName.toUpperCase()}</h3>
                   </div>
                   <div className='box-score-score'>

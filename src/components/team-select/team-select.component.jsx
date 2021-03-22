@@ -15,6 +15,9 @@ const TeamSelect = ({ players, history, starting, setBench, setOpponentName }) =
 
    useEffect(() => {
       setBench(players)
+
+      return function cleanup() {
+      }
    }, [])
 
    const handleStart = () => {

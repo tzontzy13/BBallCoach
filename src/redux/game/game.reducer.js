@@ -3,6 +3,7 @@ import GameActionTypes from './game.types'
 import { addPlayerTo5, setInitialStats, setPlayingTime, resetPlayingTime, subPlayers, addBlock, addSteal, addDReb, addDFoul, addOReb, addOFoul, addTov, opponentScore, shot, finishStats, calculateTeamTotals } from './game.utils'
 
 const INITIAL_STATE = {
+   hasStarted: false,
    starting: [],
    bench: [],
    homeScore: {
@@ -31,6 +32,9 @@ const INITIAL_STATE = {
 const gameReducer = (state = INITIAL_STATE, action) => {
    switch (action.type) {
 
+      case GameActionTypes.RESET_GAME:
+         return INITIAL_STATE
+
       case GameActionTypes.ADD_PLAYER_TO_5:
 
          const newState = addPlayerTo5(state, action.payload)
@@ -46,7 +50,8 @@ const gameReducer = (state = INITIAL_STATE, action) => {
       case GameActionTypes.SET_OPPONENT_NAME:
          return {
             ...state,
-            awayScore: { ...state.awayScore, awayTeamName: action.payload }
+            awayScore: { ...state.awayScore, awayTeamName: action.payload },
+            hasStarted: true
          }
 
       case GameActionTypes.TOGGLE_TIME_RUNNING:

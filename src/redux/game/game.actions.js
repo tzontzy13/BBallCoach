@@ -1,5 +1,9 @@
 import GameActionTypes from './game.types'
 
+export const resetGame = () => ({
+   type: GameActionTypes.RESET_GAME
+})
+
 export const addPlayerTo5 = (playerNumber) => ({
    type: GameActionTypes.ADD_PLAYER_TO_5,
    payload: playerNumber
