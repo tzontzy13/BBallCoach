@@ -6,10 +6,10 @@ import { withRouter } from 'react-router-dom'
 
 import CustomButton from '../../components/custom-button/custom-button.component'
 
-const HistoryPage = ({ history, match, gameHistory }) => {
+const HistoryPage = ({ history, match, gameHistory, teamName }) => {
 
    useEffect(() => {
-      // console.log(gameHistory)
+      console.log(gameHistory)
    })
 
    const handleClick = (gameTime) => { history.push(`${match.path}/${gameTime}`) }
@@ -33,8 +33,15 @@ const HistoryPage = ({ history, match, gameHistory }) => {
 
                         return (
                            <li className="list-group-item" key={game.finishedAt} onClick={() => handleClick(gameTime)}>
-                              <h3>VS {game.awayScore.awayTeamName}</h3>
-                              <p>{date.toDateString()} - SCORE: home {game.awayScore.total} - {game.homeScore.total} away</p>
+                              <h3 className='list-group-item-title'>VS {game.awayScore.awayTeamName}</h3>
+                              <div className='list-group-item-details'>
+                                 <div className='date'>
+                                    <h6>{date.toDateString()}</h6>
+                                 </div>
+                                 <div className='score'>
+                                    <h6>SCORE: {teamName} {game.awayScore.total} - {game.homeScore.total} {game.awayScore.awayTeamName}</h6>
+                                 </div>
+                              </div>
                            </li>
                         )
                      })
@@ -47,7 +54,8 @@ const HistoryPage = ({ history, match, gameHistory }) => {
 }
 
 const mapStateToProps = (state) => ({
-   gameHistory: state.team.history
+   gameHistory: state.team.history,
+   teamName: state.team.teamName
 })
 
 export default connect(mapStateToProps)(withRouter(HistoryPage))

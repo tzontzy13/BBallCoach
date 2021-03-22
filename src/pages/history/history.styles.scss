@@ -20,6 +20,12 @@
       .list-group{
          .list-group-item{
             min-height: 4rem;
+
+            .list-group-item-details{
+               display: flex;
+               flex-direction: row;
+               justify-content: space-between;
+            }
          }
       }
    }
