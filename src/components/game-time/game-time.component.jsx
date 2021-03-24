@@ -4,16 +4,16 @@ import useKeypress from 'react-use-keypress'
 
 import { connect } from 'react-redux'
 
-import { setTime } from '../../redux/game/game.actions'
+import { setTime, toggleTimeRunning } from '../../redux/game/game.actions'
 
 import Countdown from 'react-countdown'
 
-const GameTime = ({ setTime, quarter }) => {
+const GameTime = ({ setTime, quarter, toggleTimeRunning }) => {
 
    const clockRef = useRef()
 
-   useKeypress(['ArrowLeft', 'ArrowRight', ' '], (event) => {
-      if (event.key === ' ') {
+   useKeypress([' ', 'c'], (event) => {
+      if (event.key === 'c') {
 
          if (clockRef.current.isPaused() || clockRef.current.isStopped()) {
             // console.log('start')
@@ -30,6 +30,11 @@ const GameTime = ({ setTime, quarter }) => {
       }
    })
 
+   const handleStartPause = (delta) => {
+      setTime(delta)
+      toggleTimeRunning()
+   }
+
    // const min10 = 600000
    // const min12 = 720000
    const sec10 = 10000
@@ -43,8 +48,8 @@ const GameTime = ({ setTime, quarter }) => {
             intervalDelay={0}
             precision={1}
             ref={clockRef}
-            onPause={(delta) => setTime(delta.total)}
-            onStart={(delta) => setTime(delta.total)}
+            onPause={(delta) => handleStartPause(delta.total)}
+            onStart={(delta) => handleStartPause(delta.total)}
             quarter={quarter}
             onComplete={() => setTime(0)}
          />
@@ -69,7 +74,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-   setTime: (time) => dispatch(setTime(time))
+   setTime: (time) => dispatch(setTime(time)),
+   toggleTimeRunning: () => dispatch(toggleTimeRunning())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameTime)

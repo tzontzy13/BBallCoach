@@ -57,7 +57,7 @@ const gameReducer = (state = INITIAL_STATE, action) => {
       case GameActionTypes.TOGGLE_TIME_RUNNING:
          return {
             ...state,
-            timeRunning: !state.timeRunning
+            clockPaused: !state.clockPaused
          }
 
       case GameActionTypes.TOGGLE_POSSESSION:
@@ -162,6 +162,7 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             starting: [...newStartingPlusDFoul],
             selected: ''
          }
+
       case GameActionTypes.ADD_OREB:
          const newStartingPlusOReb = addOReb(state.starting, state.selected)
 

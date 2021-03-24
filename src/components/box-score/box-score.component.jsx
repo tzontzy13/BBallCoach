@@ -23,7 +23,7 @@ const BoxScore = ({ gameHistory, match, teamName }) => {
                      <h3>{teamName.toUpperCase()} VS {filtered.awayScore.awayTeamName.toUpperCase()}</h3>
                   </div>
                   <div className='box-score-score'>
-                     <h4>Final score: {filtered.awayScore.total} - {filtered.homeScore.total}</h4>
+                     <h5>Final score: {teamName.toUpperCase()} <strong>{filtered.homeScore.total} - {filtered.awayScore.total}</strong> {filtered.awayScore.awayTeamName.toUpperCase()}</h5>
                   </div>
                   <div className='box-score-table'>
                      <Table tableRows={filtered} />

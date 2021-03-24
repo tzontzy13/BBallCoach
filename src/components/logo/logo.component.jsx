@@ -13,7 +13,7 @@ const Logo = ({ boxScore, history, awayScore, homeScore }) => {
    const bgurl = '/logo.png'
 
    const handleSave = () => {
-      saveGameBoxScoreToUser('users', '01BUXwyoPfSC4iP6TEq7Z6RVur62', boxScore, homeScore, awayScore)
+      saveGameBoxScoreToUser('users', boxScore, homeScore, awayScore)
          .then(history.push('/team/history'))
          .catch(err => (console.log(err)))
    }

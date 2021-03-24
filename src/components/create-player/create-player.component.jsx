@@ -24,27 +24,22 @@ const CreatePlayer = ({ addPlayer, players }) => {
       setPlayer({ ...player, [name]: value })
    }
 
-   const handleSubmit = event => {
-      event.preventDefault()
+   const handleSubmit = e => {
+      e.preventDefault()
 
 
-      // const existingPlayer = players.find(player => player.playerNumber === playerNumber)
+      const existingPlayer = players ? players.find(player => player.playerNumber === playerNumber) : undefined
+      console.log(existingPlayer)
 
-      // if (existingPlayer) {
-      //    alert('Player number taken')
-      // } else {
-      //    addPlayer({ playerName, playerNumber })
-      //    setPlayer({
-      //       playerName: '',
-      //       playerNumber: '',
-      //    })
-      // }
-
-      addPlayer({ playerName, playerNumber })
-      setPlayer({
-         playerName: '',
-         playerNumber: '',
-      })
+      if (existingPlayer) {
+         alert('Player number taken')
+      } else {
+         addPlayer({ playerName, playerNumber })
+         setPlayer({
+            playerName: '',
+            playerNumber: '',
+         })
+      }
    }
 
    return (
@@ -59,7 +54,7 @@ const CreatePlayer = ({ addPlayer, players }) => {
                required
             />
             <FormInput
-               type='text'
+               type='number'
                name='playerNumber'
                value={playerNumber}
                onChange={handleChange}

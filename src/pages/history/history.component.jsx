@@ -39,7 +39,7 @@ const HistoryPage = ({ history, match, gameHistory, teamName }) => {
                                     <h6>{date.toDateString()}</h6>
                                  </div>
                                  <div className='score'>
-                                    <h6>SCORE: {teamName} {game.awayScore.total} - {game.homeScore.total} {game.awayScore.awayTeamName}</h6>
+                                    <h6>SCORE: {teamName} {game.homeScore.total} - {game.awayScore.total} {game.awayScore.awayTeamName}</h6>
                                  </div>
                               </div>
                            </li>

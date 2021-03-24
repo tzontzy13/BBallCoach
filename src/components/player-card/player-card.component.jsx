@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { connect } from 'react-redux'
 
@@ -6,7 +6,7 @@ import './player-card.styles.scss'
 
 import { subPlayers } from '../../redux/game/game.actions'
 
-const PlayerCard = ({ player, sub, selected, bench, subPlayers }) => {
+const PlayerCard = ({ player, sub, selected, bench, subPlayers, isClockPaused }) => {
 
    const handleClick = (benchP) => {
       subPlayers(player, benchP)
@@ -19,9 +19,9 @@ const PlayerCard = ({ player, sub, selected, bench, subPlayers }) => {
             sub
                ?
                <div className="btn-group dropend player-card-btn">
-                  <button type="button" className="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button disabled={!isClockPaused} type="button" className="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                      Sub
-                  </button>
+                        </button>
                   <ul className="dropdown-menu">
                      {bench.map(benchP =>
                         <button onClick={() => handleClick(benchP)} className="dropdown-item" type="button" key={benchP.playerNumber}>
@@ -37,7 +37,8 @@ const PlayerCard = ({ player, sub, selected, bench, subPlayers }) => {
 }
 
 const mapStateToProps = state => ({
-   bench: state.game.bench
+   bench: state.game.bench,
+   isClockPaused: state.game.clockPaused
 })
 
 const mapDispatchToProps = dispatch => ({

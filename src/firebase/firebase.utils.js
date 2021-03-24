@@ -70,8 +70,8 @@ export const addCollectionAndDocumentsToUser2 = async (collectionKey, userKey, o
       .catch(err => console.log(err))
 }
 
-export const saveGameBoxScoreToUser = async (collectionKey, userKey, boxScore, homeScore, awayScore) => {
-   const userRef = firestore.collection(collectionKey).doc(userKey)
+export const saveGameBoxScoreToUser = async (collectionKey, boxScore, homeScore, awayScore) => {
+   const userRef = firestore.collection(collectionKey).doc(auth.currentUser.uid)
 
    const createdAt = new Date()
 

@@ -184,6 +184,55 @@ export const shot = (madeOrMiss, position, assistBy, selected, starting, homeSco
 
 export const finishStats = players => {
 
+   const INIT = {
+      mp: 0,
+      fg: 0,
+      fga: 0,
+      fgp: 0,
+      p3: 0,
+      p3a: 0,
+      p3p: 0,
+      ft: 0,
+      fta: 0,
+      ftp: 0,
+      orb: 0,
+      drb: 0,
+      trb: 0,
+      ast: 0,
+      stl: 0,
+      blk: 0,
+      tov: 0,
+      pf: 0,
+      pts: 0,
+      plusMinus: 0,
+      subIn: 0,
+   }
+
+   const stats = players.reduce((init, player) => {
+      // console.log(player.stats)
+      return {
+         mp: init.mp + player.stats.mp,
+         fg: init.fg + player.stats.fg,
+         fga: init.fga + player.stats.fga,
+         fgp: init.fgp + player.stats.fgp,
+         p3: init.p3 + player.stats.p3,
+         p3a: init.p3a + player.stats.p3a,
+         ft: init.ft + player.stats.ft,
+         fta: init.fta + player.stats.fta,
+         ftp: init.ftp + player.stats.ftp,
+         orb: init.orb + player.stats.orb,
+         drb: init.drb + player.stats.drb,
+         trb: init.trb + player.stats.trb,
+         ast: init.ast + player.stats.ast,
+         stl: init.stl + player.stats.stl,
+         blk: init.blk + player.stats.blk,
+         tov: init.tov + player.stats.tov,
+         pf: init.pf + player.stats.pf,
+         pts: init.pts + player.stats.pts,
+         plusMinus: init.plusMinus + player.stats.plusMinus,
+      }
+   }, INIT)
+
    const finalStats = players.map(player => {
 
       const newPlayer = {
@@ -200,12 +249,9 @@ export const finishStats = players => {
       return newPlayer
    })
 
-   const test = finalStats[0].stats
+   const teamStats = { playerName: 'TEAM', playerNumber: 'TOTAL', stats: { ...stats } }
 
-   const teamTotals = finalStats.reduce((acc = test, curVal) => acc + curVal.stats)
-   console.log(teamTotals)
-
-   return finalStats
+   return [...finalStats, teamStats]
 }
 
 export const calculateTeamTotals = (finalScoreboard) => {
@@ -325,7 +371,6 @@ export const setPlayingTime = (starting, currentTime) => {
 
       return { ...player, stats: { ...player.stats, mp: totalMP, subIn: currentTime } }
    })
-
    return newStarting
 }
 
