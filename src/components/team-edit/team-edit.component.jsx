@@ -3,7 +3,7 @@ import './team-edit.styles.scss'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { addCollectionAndDocumentsToUser2, auth } from '../../firebase/firebase.utils'
+import { addCollectionAndDocumentsToUser, auth } from '../../firebase/firebase.utils'
 
 import PlayerAdd from '../create-player/create-player.component'
 import PlayerList from '../player-list/player-list.component'
@@ -18,7 +18,7 @@ const TeamEdit = ({ players, teamName, history }) => {
       if (players.length !== 12 || teamName === '') {
          alert("You need 12 players and a name")
       } else {
-         addCollectionAndDocumentsToUser2('users', auth.currentUser.uid, players, teamName)
+         addCollectionAndDocumentsToUser('users', auth.currentUser.uid, players, teamName)
             .then(
                history.push('/team')
             )

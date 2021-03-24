@@ -12,7 +12,7 @@ import CustomButton from '../custom-button/custom-button.component'
 import CreatePlayer from '../create-player/create-player.component'
 import PlayerList from '../player-list/player-list.component'
 
-import { addCollectionAndDocumentsToUser2, auth } from '../../firebase/firebase.utils'
+import { addCollectionAndDocumentsToUser, auth } from '../../firebase/firebase.utils'
 
 const TeamCreation = ({ players, history }) => {
 
@@ -30,7 +30,7 @@ const TeamCreation = ({ players, history }) => {
       if (players.length !== 12 || teamName === '') {
          alert("You need 12 players and a name")
       } else {
-         addCollectionAndDocumentsToUser2('users', auth.currentUser.uid, players, teamName)
+         addCollectionAndDocumentsToUser('users', auth.currentUser.uid, players, teamName)
             .then(
                () => {
                   history.push('/team')
