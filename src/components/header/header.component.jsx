@@ -3,7 +3,6 @@ import React from 'react'
 import './header.styles.scss'
 
 import { createStructuredSelector } from 'reselect'
-import { selectCartHidden } from '../../redux/cart/cart.selectors'
 import { selectCurrentUser } from '../../redux/user/user.selector'
 import { signOutStart } from '../../redux/user/user.actions'
 
@@ -11,7 +10,7 @@ import { ReactComponent as Logo2 } from '../../assets/ball3.svg'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-const Header = ({ currentUser, hidden, signOutStart }) => (
+const Header = ({ currentUser, signOutStart }) => (
    <div className='header'>
       <Link className='logo-container' to='/'>
          <Logo2 className='logo' />
@@ -33,7 +32,6 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
 
 const mapStateToProps = createStructuredSelector({
    currentUser: selectCurrentUser,
-   hidden: selectCartHidden
 })
 
 const mapDispatchToProps = dispatch => ({

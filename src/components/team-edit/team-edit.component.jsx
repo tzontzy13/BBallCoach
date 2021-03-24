@@ -20,7 +20,7 @@ const TeamEdit = ({ players, teamName, history }) => {
       } else {
          addCollectionAndDocumentsToUser2('users', auth.currentUser.uid, players, teamName)
             .then(
-               history.push('/')
+               history.push('/team')
             )
             .catch(
                err => console.log(err)
