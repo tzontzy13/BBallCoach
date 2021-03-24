@@ -34,7 +34,6 @@ const CourtO = () => {
          <div className="p2R court-btn-pos"><CourtBtnO name='p2R' /></div>
          <div className="p2CR court-btn-pos"><CourtBtnO name='p2CR' /></div>
          <div className="dunk court-btn-pos"><CourtBtnO name='p2dunk' /></div>
-         {/* <CourtD /> */}
       </div>
    )
 }

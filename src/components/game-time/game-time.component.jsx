@@ -16,11 +16,9 @@ const GameTime = ({ setTime, quarter, toggleTimeRunning }) => {
       if (event.key === 'c') {
 
          if (clockRef.current.isPaused() || clockRef.current.isStopped()) {
-            // console.log('start')
             clockRef.current.start()
             // toggleTime()
          } else {
-            // console.log('pause')
             clockRef.current.pause()
             // toggleTime()
          }

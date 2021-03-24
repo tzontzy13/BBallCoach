@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './box-score.styles.scss'
-
-import { useTable } from 'react-table'
 
 import { withRouter } from 'react-router-dom'
 

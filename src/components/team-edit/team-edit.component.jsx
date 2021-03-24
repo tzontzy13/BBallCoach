@@ -43,8 +43,4 @@ const mapStateToProps = (state) => ({
    teamName: state.team.teamName
 })
 
-const mapDispatchToProps = (dispatch) => ({
-
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TeamEdit))
+export default connect(mapStateToProps)(withRouter(TeamEdit))

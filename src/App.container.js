@@ -1,24 +1,14 @@
 import React, { useEffect } from 'react';
-// import { compose } from 'redux'
 
-// import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux'
 import { checkUserSession } from './redux/user/user.actions'
-// import { selectWasChecked } from './redux/user/user.selector'
-
-// import WithSpinner from './components/with-spinner/with-spinner.component'
 
 import App from './App'
 
-// const mapStateToProps = createStructuredSelector({
-//    isLoading: state => !selectWasChecked(state)
-// })
+// App container is a functional component that checks if a user is signed in
+// and then renders the App component
 
-const mapDispatchToProps = dispatch => ({
-   checkUserSession: () => dispatch(checkUserSession()),
-})
-
-// const AppWithSpinner = compose(connect(mapStateToProps), WithSpinner)(App)
+// This WHOLE app is built using React Functional Components, useEffect = ComponentDidMount in React Class Components
 
 const AppContainer = ({ checkUserSession }) => {
 
@@ -33,5 +23,9 @@ const AppContainer = ({ checkUserSession }) => {
    );
 
 }
+
+const mapDispatchToProps = dispatch => ({
+   checkUserSession: () => dispatch(checkUserSession()),
+})
 
 export default connect(null, mapDispatchToProps)(AppContainer)

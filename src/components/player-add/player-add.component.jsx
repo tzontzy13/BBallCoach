@@ -45,7 +45,6 @@ const PlayerAdd = ({ starting, addPlayerTo5 }) => {
          <h3>Currently selected players:</h3>
          <div>
             <PlayerList players={starting} />
-            {/* {starting.map(p => <p>{p.playerNumber}</p>)} */}
          </div>
       </div>
    )

@@ -9,8 +9,6 @@ import { selectIsTeamFetching } from '../../redux/team/team.selectors'
 
 import { withRouter, Route } from 'react-router-dom'
 
-import TeamOptionsContainer from '../../components/team-options/team-options.container'
-import TeamSelectContainer from '../../components/team-select/team-select.container'
 import TeamOptions from '../../components/team-options/team-options.component'
 import TeamSelect from '../../components/team-select/team-select.component'
 import TeamEdit from '../../components/team-edit/team-edit.component'

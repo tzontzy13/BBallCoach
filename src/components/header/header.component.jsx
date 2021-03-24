@@ -7,12 +7,9 @@ import { selectCartHidden } from '../../redux/cart/cart.selectors'
 import { selectCurrentUser } from '../../redux/user/user.selector'
 import { signOutStart } from '../../redux/user/user.actions'
 
-import { ReactComponent as Logo } from '../../assets/crown.svg'
 import { ReactComponent as Logo2 } from '../../assets/ball3.svg'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import CartIcon from '../cart-icon/cart-icon.component'
-import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 
 const Header = ({ currentUser, hidden, signOutStart }) => (
    <div className='header'>
@@ -20,15 +17,9 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
          <Logo2 className='logo' />
       </Link>
       <div className='options'>
-         {/* <Link className='option' to='/shop'>
-            SHOP
-         </Link> */}
          <Link className='option' to='/team'>
             TEAM
          </Link>
-         {/* <Link className='option' to='/contact'>
-            CONTACT
-            </Link> */}
          {
             currentUser
                ?
@@ -36,12 +27,7 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
                :
                <Link className='option' to='/signin'>SIGN IN</Link>
          }
-         {/* <CartIcon /> */}
       </div>
-      {
-         hidden ? null : <CartDropdown />
-      }
-
    </div>
 )
 

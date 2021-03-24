@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { useTable } from 'react-table'
 
-import makeData from './makeData'
-
 const Styles = styled.div`
   padding: 1rem;
 
@@ -180,10 +178,6 @@ function App({ tableRows }) {
       ],
       []
    )
-
-   const data = React.useMemo(() => makeData(3), [])
-   // console.log(data)
-   // console.log(tableRows)
 
    const test = tableRows.boxScore.map(row => {
       return { playerName: row.playerName, playerNumber: row.playerNumber, ...row.stats }

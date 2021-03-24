@@ -4,26 +4,6 @@ import './court-btn-o.styles.scss'
 import { connect } from 'react-redux'
 import { addOReb, addOFoul, addTov, shot } from '../../redux/game/game.actions'
 
-const DropRight = ({ restOfPlayers, name, shot }) => {
-
-   // console.log(restOfPlayers)
-
-   return (
-      <div className="btn-group dropend">
-         <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            + assist
-         </button>
-         <ul className="dropdown-menu assist-by">
-            {restOfPlayers.map(player =>
-               <li key={player.playerNumber}><button className="dropdown-item" type="button" onClick={() => shot('made', name, player.playerNumber)}>
-                  {player.playerName}
-               </button></li>
-            )}
-         </ul>
-      </div>
-   )
-}
-
 const CourtBtnO = ({ name, starting, selected, addOReb, addOFoul, addTov, shot }) => {
 
    const restOfPlayers = starting.filter(player => player.playerNumber !== selected)
@@ -65,6 +45,24 @@ const CourtBtnO = ({ name, starting, selected, addOReb, addOFoul, addTov, shot }
             <li><button className="dropdown-item" type="button" onClick={() => addTov()}>
                TO
             </button></li>
+         </ul>
+      </div>
+   )
+}
+
+const DropRight = ({ restOfPlayers, name, shot }) => {
+
+   return (
+      <div className="btn-group dropend">
+         <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            + assist
+         </button>
+         <ul className="dropdown-menu assist-by">
+            {restOfPlayers.map(player =>
+               <li key={player.playerNumber}><button className="dropdown-item" type="button" onClick={() => shot('made', name, player.playerNumber)}>
+                  {player.playerName}
+               </button></li>
+            )}
          </ul>
       </div>
    )

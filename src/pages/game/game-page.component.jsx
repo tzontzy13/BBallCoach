@@ -14,7 +14,7 @@ import GameBench from '../../components/game-bench/game-bench.component'
 import Logo from '../../components/logo/logo.component'
 
 
-const GamePage = ({ resetGame, test }) => {
+const GamePage = ({ resetGame, hasGameStarted }) => {
 
    useEffect(() => {
       return function cleanup() {
@@ -24,7 +24,7 @@ const GamePage = ({ resetGame, test }) => {
 
    return (
       <div>
-         {test
+         {hasGameStarted
             ?
             <div className="grid-container">
                <GameCurrent />
@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const mapStateToProps = (state) => ({
-   test: state.game.hasStarted
+   hasGameStarted: state.game.hasStarted
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GamePage)

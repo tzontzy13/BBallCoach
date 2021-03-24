@@ -1,4 +1,6 @@
 import React from 'react'
+import './welcome.styles.scss'
+
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { selectCurrentUser } from '../../redux/user/user.selector'
@@ -7,7 +9,9 @@ import { withRouter } from 'react-router-dom'
 
 import CustomButton from '../../components/custom-button/custom-button.component'
 
-import './welcome.styles.scss'
+// Welcome Page is rendered at path='/'
+// If there is a user present, "welcome" and allow him to navigate to his Team Page
+// If not, instruct user to either sign in or sign up
 
 const WelcomePage = ({ currentUser, history }) => {
    return (<div className='welcome-page'>
@@ -20,7 +24,7 @@ const WelcomePage = ({ currentUser, history }) => {
          </div>
          :
          <div>
-            <h2>Please sign in</h2>
+            <h2>Please sign in or up</h2>
          </div>
       }
    </div>)

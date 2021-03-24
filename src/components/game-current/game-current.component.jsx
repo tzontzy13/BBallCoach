@@ -14,23 +14,18 @@ const GameCurrent = ({ starting, selectedPlayer, selectPlayer }) => {
 
    useKeypress(['1', '2', '3', '4', '5'], (event) => {
       if (event.key === '1') {
-         // console.log('1 pressed')
          selectPlayer(0)
       }
       if (event.key === '2') {
-         // console.log('2 pressed')
          selectPlayer(1)
       }
       if (event.key === '3') {
-         // console.log('3 pressed')
          selectPlayer(2)
       }
       if (event.key === '4') {
-         // console.log('4 pressed')
          selectPlayer(3)
       }
       if (event.key === '5') {
-         // console.log('5 pressed')
          selectPlayer(4)
       }
    })

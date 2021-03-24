@@ -4,8 +4,6 @@ import './history.styles.scss'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import CustomButton from '../../components/custom-button/custom-button.component'
-
 const HistoryPage = ({ history, match, gameHistory, teamName }) => {
 
    useEffect(() => {
@@ -17,9 +15,6 @@ const HistoryPage = ({ history, match, gameHistory, teamName }) => {
    return (
       <div className='history-page'>
          <div className='history-page-header'>
-            {/* <div className='history-page-btn'>
-               <CustomButton onClick={() => history.push('/team')}>Back</CustomButton>
-            </div> */}
             <h3 className='history-page-title'>Here is your game history:</h3>
          </div>
          <div className='history-page-list'>

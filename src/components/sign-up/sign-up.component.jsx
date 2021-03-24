@@ -8,8 +8,6 @@ import CustomButton from '../custom-button/custom-button.component'
 
 import { signUpStart } from '../../redux/user/user.actions'
 
-// import { auth, createUserProfileDocument } from '../../firebase/firebase.utils'
-
 const SignUp = ({ signUpStart }) => {
 
    const [userCredentials, setUserCredentials] = useState({
