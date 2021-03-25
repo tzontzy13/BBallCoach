@@ -1,6 +1,6 @@
-export const addPlayerTo5 = (state, playerNumberToAdd) => {
+export const addPlayerTo5 = (bench, starting, playerNumberToAdd) => {
 
-   const { bench, starting } = state
+   // const { bench, starting } = state
 
    const findPlayer = bench.find(player => player.playerNumber === playerNumberToAdd)
 
@@ -9,9 +9,9 @@ export const addPlayerTo5 = (state, playerNumberToAdd) => {
       const newBench = bench.filter(player => player !== findPlayer)
       const newStarting = [...starting, newPlayer]
 
-      return { ...state, bench: newBench, starting: newStarting }
+      return { bench: newBench, starting: newStarting }
    } else {
-      return state
+      return { bench, starting }
    }
 }
 

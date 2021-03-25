@@ -5,9 +5,9 @@ import { addPlayerToTeam, removePlayerFromTeam } from './team.utils'
 const INITIAL_STATE = {
    teamName: '',
    players: [],
+   history: [],
    isFetching: true,
    errorMessage: undefined,
-   history: []
 }
 
 const teamReducer = (state = INITIAL_STATE, action) => {
@@ -20,10 +20,9 @@ const teamReducer = (state = INITIAL_STATE, action) => {
          }
 
       case TeamActionTypes.REMOVE_PLAYER:
-         const updatedTeam = removePlayerFromTeam(state.players, action.payload)
          return {
             ...state,
-            players: updatedTeam
+            players: removePlayerFromTeam(state.players, action.payload)
          }
 
       case TeamActionTypes.FETCH_TEAM_START:
@@ -49,8 +48,6 @@ const teamReducer = (state = INITIAL_STATE, action) => {
          }
 
       default:
-         // console.log(action.type)
-         // console.log(TeamActionTypes)
          return state
    }
 }

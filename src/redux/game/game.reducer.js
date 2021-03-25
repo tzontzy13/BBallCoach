@@ -37,8 +37,12 @@ const gameReducer = (state = INITIAL_STATE, action) => {
 
       case GameActionTypes.ADD_PLAYER_TO_5:
 
-         const newState = addPlayerTo5(state, action.payload)
-         return { ...newState }
+         const { bench, starting } = addPlayerTo5(state.bench, state.starting, action.payload)
+         return {
+            ...state,
+            bench: bench,
+            starting: starting
+         }
 
       case GameActionTypes.SET_BENCH:
 
