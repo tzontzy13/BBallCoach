@@ -1,20 +1,3 @@
-export const addPlayerTo5 = (bench, starting, playerNumberToAdd) => {
-
-   // const { bench, starting } = state
-
-   const findPlayer = bench.find(player => player.playerNumber === playerNumberToAdd)
-
-   if (findPlayer !== undefined) {
-      const newPlayer = { ...findPlayer, stats: { ...findPlayer.stats, subIn: 10000 } }
-      const newBench = bench.filter(player => player !== findPlayer)
-      const newStarting = [...starting, newPlayer]
-
-      return { bench: newBench, starting: newStarting }
-   } else {
-      return { bench, starting }
-   }
-}
-
 export const shot = (madeOrMiss, position, assistBy, selected, starting, homeScore) => {
 
    const playerWhoShot = starting.find(player => player.playerNumber === selected)
@@ -254,8 +237,82 @@ export const finishStats = players => {
    return [...finalStats, teamStats]
 }
 
-export const calculateTeamTotals = (finalScoreboard) => {
-   console.log(finalScoreboard)
+export const opponentScore = (starting, points) => {
+
+   const newStartingPlusMinus = starting.map(player => {
+      const newPlayer = { ...player, stats: { ...player.stats, plusMinus: player.stats.plusMinus - points } }
+      return newPlayer
+   })
+
+   return newStartingPlusMinus
+}
+
+export const setPlayingTime = (starting, currentTime) => {
+   const newStarting = starting.map(player => {
+      const playerMP = player.stats.subIn - currentTime
+      const totalMP = player.stats.mp + playerMP
+
+      return { ...player, stats: { ...player.stats, mp: totalMP, subIn: currentTime } }
+   })
+   return newStarting
+}
+
+export const resetPlayingTime = (starting) => {
+   const newStarting = starting.map(player => {
+      const playerMP = player.stats.subIn
+      const totalMP = player.stats.mp + playerMP
+
+      return { ...player, stats: { ...player.stats, mp: totalMP, subIn: 10000 } }
+   })
+
+   return newStarting
+}
+
+export const setInitialStats = (players) => {
+
+   return players.map(player => {
+      return {
+         ...player,
+         stats: {
+            mp: 0,
+            fg: 0,
+            fga: 0,
+            fgp: 0,
+            p3: 0,
+            p3a: 0,
+            p3p: 0,
+            ft: 0,
+            fta: 0,
+            ftp: 0,
+            orb: 0,
+            drb: 0,
+            trb: 0,
+            ast: 0,
+            stl: 0,
+            blk: 0,
+            tov: 0,
+            pf: 0,
+            pts: 0,
+            plusMinus: 0,
+            subIn: 0,
+         }
+      }
+   })
+}
+
+export const addPlayerTo5 = (bench, starting, playerNumberToAdd) => {
+
+   const findPlayer = bench.find(player => player.playerNumber === playerNumberToAdd)
+
+   if (findPlayer !== undefined) {
+      const newPlayer = { ...findPlayer, stats: { ...findPlayer.stats, subIn: 10000 } }
+      const newBench = bench.filter(player => player !== findPlayer)
+      const newStarting = [...starting, newPlayer]
+
+      return { bench: newBench, starting: newStarting }
+   } else {
+      return { bench, starting }
+   }
 }
 
 export const addDFoul = (starting, selected) => {
@@ -335,16 +392,6 @@ export const addTov = (starting, selected) => {
    return newArray
 }
 
-export const opponentScore = (starting, points) => {
-
-   const newStartingPlusMinus = starting.map(player => {
-      const newPlayer = { ...player, stats: { ...player.stats, plusMinus: player.stats.plusMinus - points } }
-      return newPlayer
-   })
-
-   return newStartingPlusMinus
-}
-
 export const subPlayers = (bench, starting, playerOut, playerIn, subTime) => {
    console.log(bench)
    const findBenchPlayer = bench.find(player => player.playerNumber === playerIn)
@@ -362,58 +409,4 @@ export const subPlayers = (bench, starting, playerOut, playerIn, subTime) => {
    newStarting[startingIndex] = findBenchPlayer2
 
    return { newBench, newStarting }
-}
-
-export const setPlayingTime = (starting, currentTime) => {
-   const newStarting = starting.map(player => {
-      const playerMP = player.stats.subIn - currentTime
-      const totalMP = player.stats.mp + playerMP
-
-      return { ...player, stats: { ...player.stats, mp: totalMP, subIn: currentTime } }
-   })
-   return newStarting
-}
-
-export const resetPlayingTime = (starting) => {
-   const newStarting = starting.map(player => {
-      const playerMP = player.stats.subIn
-      const totalMP = player.stats.mp + playerMP
-
-      return { ...player, stats: { ...player.stats, mp: totalMP, subIn: 10000 } }
-   })
-
-   return newStarting
-}
-
-export const setInitialStats = (players) => {
-
-   return players.map(player => {
-      return {
-         ...player,
-         stats: {
-            mp: 0,
-            fg: 0,
-            fga: 0,
-            fgp: 0,
-            p3: 0,
-            p3a: 0,
-            p3p: 0,
-            ft: 0,
-            fta: 0,
-            ftp: 0,
-            orb: 0,
-            drb: 0,
-            trb: 0,
-            ast: 0,
-            stl: 0,
-            blk: 0,
-            tov: 0,
-            pf: 0,
-            pts: 0,
-            plusMinus: 0,
-            subIn: 0,
-            // subOut: 0,
-         }
-      }
-   })
 }

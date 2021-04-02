@@ -58,9 +58,9 @@ const mapStateToPropsForSpinner = state => ({
 })
 
 // connect user to App
-const AppRoutes = connect(mapStateToProps)(App)
+const AppConnectedToUser = connect(mapStateToProps)(App)
 
 // connect App to Spinner
-const AppWithSpinner = compose(connect(mapStateToPropsForSpinner), WithSpinner)(AppRoutes)
+const AppWithSpinner = compose(connect(mapStateToPropsForSpinner), WithSpinner)(AppConnectedToUser)
 
 export default AppWithSpinner

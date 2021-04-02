@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react'
-import App from './App';
+import App from './with-spinner.component';
 
 import { Provider } from 'react-redux';
 

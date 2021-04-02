@@ -71,17 +71,12 @@ const gameReducer = (state = INITIAL_STATE, action) => {
          }
 
       case GameActionTypes.SET_TIME:
+         const newStartingTime = setPlayingTime(state.starting, action.payload)
+         const allPlayersStats = newStartingTime.concat(state.bench)
+         const finalScoreBoard = finishStats(allPlayersStats)
+
          if (action.payload === 0) {
             if (state.quarter === 4) {
-               const newStartingTime = setPlayingTime(state.starting, action.payload)
-
-               const allPlayersStats = newStartingTime.concat(state.bench)
-
-               const finalScoreBoard = finishStats(allPlayersStats)
-
-               // const test = calculateTeamTotals(finalScoreBoard)
-               // console.log(test)
-
                return {
                   ...state,
                   timeRunning: 0,
@@ -93,20 +88,45 @@ const gameReducer = (state = INITIAL_STATE, action) => {
                   ...state,
                   timeRunning: 10000,
                   starting: resetPlayingTime(state.starting),
-                  quarter: state.quarter + 1
+                  quarter: state.quarter + 1,
+                  finalBoxScore: finalScoreBoard
                }
             }
          } else {
-            const newStartingTime = setPlayingTime(state.starting, action.payload)
-            const allPlayersStats = newStartingTime.concat(state.bench)
-            const finalScoreBoard = finishStats(allPlayersStats)
-
             return {
                ...state,
                timeRunning: action.payload,
                starting: setPlayingTime(state.starting, action.payload),
                finalBoxScore: finalScoreBoard
             }
+         }
+
+      case GameActionTypes.OPPONENT_SCORE:
+         const newStartingPlusMinus = opponentScore(state.starting, action.payload)
+
+         return {
+            ...state,
+            starting: newStartingPlusMinus,
+            awayScore: {
+               ...state.awayScore,
+               total: state.awayScore.total + action.payload
+            }
+         }
+
+      default:
+         return state
+
+      case GameActionTypes.SHOT:
+
+         const { madeOrMiss, position, assistBy } = action.payload
+
+         const { newStartingAfterShot, homeScore } = shot(madeOrMiss, position, assistBy, state.selected, state.starting, state.homeScore)
+
+         return {
+            ...state,
+            starting: newStartingAfterShot,
+            homeScore: homeScore,
+            selected: ''
          }
 
       case GameActionTypes.SUB_PLAYERS:
@@ -193,34 +213,6 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             starting: [...newStartingPlusTov],
             selected: ''
          }
-
-      case GameActionTypes.OPPONENT_SCORE:
-         const newStartingPlusMinus = opponentScore(state.starting, action.payload)
-
-         return {
-            ...state,
-            starting: newStartingPlusMinus,
-            awayScore: {
-               ...state.awayScore,
-               total: state.awayScore.total + action.payload
-            }
-         }
-
-      case GameActionTypes.SHOT:
-
-         const { madeOrMiss, position, assistBy } = action.payload
-
-         const { newStartingAfterShot, homeScore } = shot(madeOrMiss, position, assistBy, state.selected, state.starting, state.homeScore)
-
-         return {
-            ...state,
-            starting: newStartingAfterShot,
-            homeScore: homeScore,
-            selected: ''
-         }
-
-      default:
-         return state
    }
 }
 

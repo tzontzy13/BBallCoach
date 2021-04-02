@@ -24,7 +24,6 @@ export function* fetchTeamAsync() {
    } catch (err) {
       yield put(fetchTeamFailure(err.message))
    }
-
 }
 
 export function* fetchTeamStart() {

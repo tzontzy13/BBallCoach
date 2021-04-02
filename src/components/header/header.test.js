@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react'
-import App from './App';
+import App from './header.component';
 
 import { Provider } from 'react-redux';
 
