@@ -1,5 +1,9 @@
 import UserActionTypes from './user.types'
 
+export const checkUserSession = () => ({
+   type: UserActionTypes.CHECK_USER_SESSION
+})
+
 export const googleSignInStart = () => ({
    type: UserActionTypes.GOOGLE_SIGN_IN_START
 })
@@ -17,10 +21,6 @@ export const signInSuccess = (user) => ({
 export const signInFailure = error => ({
    type: UserActionTypes.SIGN_IN_FAILURE,
    payload: error
-})
-
-export const checkUserSession = () => ({
-   type: UserActionTypes.CHECK_USER_SESSION
 })
 
 export const signOutStart = () => ({
@@ -50,11 +50,6 @@ export const signUpFailure = (error) => ({
    type: UserActionTypes.SIGN_UP_FAILURE,
    payload: error
 })
-
-export const setCurrentUser = user => ({
-   type: UserActionTypes.SET_CURRENT_USER,
-   payload: user
-});
 
 export const setChecked = (bool) => ({
    type: UserActionTypes.USER_CHECKED,

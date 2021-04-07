@@ -32,13 +32,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
             error: action.payload
          }
 
-      case UserActionTypes.SET_CURRENT_USER:
-         return {
-            ...state,
-            currentUser: action.payload,
-            error: null
-         }
-
       case UserActionTypes.USER_CHECKED:
          return {
             ...state,

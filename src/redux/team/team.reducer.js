@@ -6,12 +6,15 @@ const INITIAL_STATE = {
    teamName: '',
    players: [],
    history: [],
-   isFetching: true,
+   isFetching: false,
    errorMessage: undefined,
 }
 
 const teamReducer = (state = INITIAL_STATE, action) => {
    switch (action.type) {
+
+      case TeamActionTypes.RESET_TEAM:
+         return INITIAL_STATE
 
       case TeamActionTypes.ADD_PLAYER:
          return {

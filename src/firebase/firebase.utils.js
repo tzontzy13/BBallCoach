@@ -39,9 +39,12 @@ export const addCollectionAndDocumentsToUser = async (collectionKey, userKey, ob
       .then()
       .catch(err => console.log(err))
 }
-
+const getFireStore = () => { return firestore; };
+const getAuth = () => { return auth; };
 export const saveGameBoxScoreToUser = async (collectionKey, boxScore, homeScore, awayScore) => {
-   const userRef = firestore.collection(collectionKey).doc(auth.currentUser.uid)
+   const userRef = getFireStore()
+      .collection(collectionKey)
+      .doc(getAuth().currentUser.uid)
 
    const createdAt = new Date()
 
@@ -88,3 +91,14 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
 
    return await batch.commit()
 }
+
+// testing
+export async function init() {
+   firebase.initializeApp(config)
+}
+
+// //export only used for testing
+// export default {
+//    getCurrentUser,
+//    saveGameBoxScoreToUser
+// }

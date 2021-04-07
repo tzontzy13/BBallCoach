@@ -113,9 +113,6 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             }
          }
 
-      default:
-         return state
-
       case GameActionTypes.SHOT:
 
          const { madeOrMiss, position, assistBy } = action.payload
@@ -213,6 +210,9 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             starting: [...newStartingPlusTov],
             selected: ''
          }
+
+      default:
+         return state
    }
 }
 

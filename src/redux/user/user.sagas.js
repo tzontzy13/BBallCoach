@@ -14,6 +14,9 @@ import {
    setChecked
 } from './user.actions'
 
+import { resetGame } from '../game/game.actions'
+import { resetTeam } from '../team/team.actions'
+
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
    try {
       const userRef = yield call(createUserProfileDocument, userAuth, additionalData)
@@ -59,6 +62,8 @@ export function* signOut() {
    try {
       yield auth.signOut()
       yield put(signOutSuccess())
+      yield put(resetTeam())
+      yield put(resetGame())
    } catch (err) {
       yield put(signOutFailure(err))
    }

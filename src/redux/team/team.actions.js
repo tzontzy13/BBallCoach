@@ -23,3 +23,7 @@ export const fetchTeamFailure = errorMessage => ({
    type: TeamActionTypes.FETCH_TEAM_FAIL,
    payload: errorMessage
 })
+
+export const resetTeam = () => ({
+   type: TeamActionTypes.RESET_TEAM
+})
