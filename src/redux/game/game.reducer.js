@@ -128,6 +128,7 @@ const gameReducer = (state = INITIAL_STATE, action) => {
 
       case GameActionTypes.SUB_PLAYERS:
          const { playerOut, playerIn } = action.payload
+
          const copyBench = JSON.parse(JSON.stringify(state.bench))
          const copyStarting = JSON.parse(JSON.stringify(state.starting))
 

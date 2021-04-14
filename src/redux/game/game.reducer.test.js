@@ -1041,7 +1041,7 @@ describe('User reducer tests', () => {
    it('should substitute two players', () => {
       expect(gameReducer(INITIAL_STATE, {
          type: 'SUB_PLAYERS',
-         payload: { playerIn: '2', playerOut: '13' },
+         payload: { playerIn: { playerNumber: '2' }, playerOut: { playerNumber: '13' } },
       })).toEqual({
          ...INITIAL_STATE,
          selected: '',

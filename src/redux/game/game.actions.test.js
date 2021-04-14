@@ -69,12 +69,15 @@ it('should create an action to set time', () => {
 
 it('should create an action to sub players', () => {
 
+   const playerIn = {}
+   const playerOut = {}
+
    const expectedAction = {
       type: 'SUB_PLAYERS',
-      payload: { playerIn: { playerNumber: 1 }, playerOut: { playerNumber: 2 } }
+      payload: { playerIn, playerOut }
    }
 
-   expect(actions.subPlayers({ playerIn: { playerNumber: 1 }, playerOut: { playerNumber: 2 } })).toEqual(expectedAction)
+   expect(actions.subPlayers(playerIn, playerOut)).toEqual(expectedAction)
 })
 
 it('should create an action to select a player', () => {
@@ -150,7 +153,7 @@ it('should create an action add a turnover', () => {
    expect(actions.addTov()).toEqual(expectedAction)
 })
 
-it('should create an action set opponet socre', () => {
+it('should create an action set opponet score', () => {
 
    const expectedAction = {
       type: 'OPPONENT_SCORE',

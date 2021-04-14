@@ -34,7 +34,7 @@ export const setTime = (time) => ({
 
 export const subPlayers = (playerOut, playerIn) => ({
    type: GameActionTypes.SUB_PLAYERS,
-   payload: { playerIn: { playerNumber: 1 }, playerOut: { playerNumber: 2 } }
+   payload: { playerIn, playerOut }
 })
 
 export const selectPlayer = (playerPos) => ({

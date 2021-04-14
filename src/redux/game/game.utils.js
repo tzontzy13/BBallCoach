@@ -393,9 +393,8 @@ export const addTov = (starting, selected) => {
 }
 
 export const subPlayers = (bench, starting, playerOut, playerIn, subTime) => {
-   console.log(bench)
-   const findBenchPlayer = bench.find(player => player.playerNumber === playerIn)
-   const findStartingPlayer = starting.find(player => player.playerNumber === playerOut)
+   const findBenchPlayer = bench.find(player => player.playerNumber === playerIn.playerNumber)
+   const findStartingPlayer = starting.find(player => player.playerNumber === playerOut.playerNumber)
 
    const benchIndex = bench.indexOf(findBenchPlayer)
    const startingIndex = starting.indexOf(findStartingPlayer)
