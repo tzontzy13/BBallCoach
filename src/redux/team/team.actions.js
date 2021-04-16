@@ -27,3 +27,8 @@ export const fetchTeamFailure = errorMessage => ({
 export const resetTeam = () => ({
    type: TeamActionTypes.RESET_TEAM
 })
+
+export const setTeamChecked = (payload) => ({
+   type: 'TEAM_CHECKED',
+   payload: payload
+})

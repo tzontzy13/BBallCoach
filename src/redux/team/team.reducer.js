@@ -8,6 +8,7 @@ const INITIAL_STATE = {
    history: [],
    isFetching: false,
    errorMessage: undefined,
+   wasChecked: false
 }
 
 const teamReducer = (state = INITIAL_STATE, action) => {
@@ -28,10 +29,16 @@ const teamReducer = (state = INITIAL_STATE, action) => {
             players: removePlayerFromTeam(state.players, action.payload)
          }
 
-      case TeamActionTypes.FETCH_TEAM_START:
+      // case TeamActionTypes.FETCH_TEAM_START:
+      //    return {
+      //       ...state,
+      //       isFetching: true
+      //    }
+
+      case 'TEAM_CHECKED':
          return {
             ...state,
-            isFetching: true
+            wasChecked: action.payload
          }
 
       case TeamActionTypes.FETCH_TEAM_SUCCESS:

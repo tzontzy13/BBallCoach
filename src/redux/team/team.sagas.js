@@ -3,7 +3,7 @@ import { all, takeLatest, call, put, take } from 'redux-saga/effects'
 
 import { firestore, auth } from '../../firebase/firebase.utils'
 
-import { fetchTeamSuccess, fetchTeamFailure } from './team.actions'
+import { fetchTeamSuccess, fetchTeamFailure, setTeamChecked } from './team.actions'
 
 import TeamActionTypes from './team.types'
 
@@ -19,10 +19,12 @@ export function* fetchTeamAsync() {
          const teamData = data.data().team
          const gameData = data.data().games
          yield put(fetchTeamSuccess({ ...teamData, history: gameData }))
+         yield put(setTeamChecked(true))
       }
 
    } catch (err) {
       yield put(fetchTeamFailure(err.message))
+      yield put(setTeamChecked(true))
    }
 }
 

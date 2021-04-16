@@ -5,13 +5,10 @@ import { fetchTeamStart } from '../../redux/team/team.actions'
 
 import TeamPage from './team.component'
 
-const mapDispatchToProps = dispatch => ({
-   fetchTeamStart: () => dispatch(fetchTeamStart()),
-})
-
 const AppContainer = ({ fetchTeamStart }) => {
 
    useEffect(() => {
+      console.log('started fetching')
       fetchTeamStart()
    }, [fetchTeamStart])
 
@@ -22,5 +19,9 @@ const AppContainer = ({ fetchTeamStart }) => {
    );
 
 }
+
+const mapDispatchToProps = dispatch => ({
+   fetchTeamStart: () => dispatch(fetchTeamStart()),
+})
 
 export default connect(null, mapDispatchToProps)(AppContainer)

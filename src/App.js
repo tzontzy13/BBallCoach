@@ -37,7 +37,6 @@ const App = ({ currentUser }) => {
                render={() => currentUser ? (<Redirect to='/' />) : (<SignInUp />)}
             />
             <Route
-               // exact
                path='/team'
                render={() => currentUser ? <TeamPageContainer /> : <Redirect to='/signin' />}
             />
