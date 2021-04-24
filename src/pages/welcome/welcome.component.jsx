@@ -1,6 +1,8 @@
 import React from 'react'
 import './welcome.styles.scss'
 
+import axios from 'axios';
+
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { selectCurrentUser } from '../../redux/user/user.selector'
@@ -14,6 +16,7 @@ import CustomButton from '../../components/custom-button/custom-button.component
 // If not, instruct user to either sign in or sign up
 
 const WelcomePage = ({ currentUser, history }) => {
+
    return (<div className='welcome-page'>
       <h1 className='welcome-title'>BBall Coach</h1>
       {currentUser
@@ -27,11 +30,13 @@ const WelcomePage = ({ currentUser, history }) => {
             <h2>Please sign in or up</h2>
          </div>
       }
-   </div>)
+
+   </div>
+   )
 }
 
 const mapStateToProps = createStructuredSelector({
-   currentUser: selectCurrentUser
+   currentUser: selectCurrentUser,
 })
 
 export default connect(mapStateToProps)(withRouter(WelcomePage))

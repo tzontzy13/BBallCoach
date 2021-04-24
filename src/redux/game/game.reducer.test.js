@@ -332,17 +332,17 @@ describe('User reducer tests', () => {
       ],
       homeScore: {
          total: 0,
-         q1: 0,
-         q2: 0,
-         q3: 0,
-         q4: 0
+         // q1: 0,
+         // q2: 0,
+         // q3: 0,
+         // q4: 0
       },
       awayScore: {
          total: 0,
-         q1: 0,
-         q2: 0,
-         q3: 0,
-         q4: 0,
+         // q1: 0,
+         // q2: 0,
+         // q3: 0,
+         // q4: 0,
          awayTeamName: ''
       },
       selected: '13',

@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/cloudFunctions/__pycache__
+
+cloudFunctions/2017-18_teamBoxScore.csv
+cloudFunctions/2017-18_playerBoxScore.csv
+cloudFunctions/2010-2019_officialBoxScore.csv

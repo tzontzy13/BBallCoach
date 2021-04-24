@@ -39,8 +39,10 @@ export const addCollectionAndDocumentsToUser = async (collectionKey, userKey, ob
       .then()
       .catch(err => console.log(err))
 }
+
 const getFireStore = () => { return firestore; };
 const getAuth = () => { return auth; };
+
 export const saveGameBoxScoreToUser = async (collectionKey, boxScore, homeScore, awayScore) => {
    const userRef = getFireStore()
       .collection(collectionKey)
@@ -97,8 +99,29 @@ export async function init() {
    firebase.initializeApp(config)
 }
 
-// //export only used for testing
-// export default {
-//    getCurrentUser,
-//    saveGameBoxScoreToUser
-// }
+export const saveGameBoxScoreToUser2 = async (collectionKey, games) => {
+   const userRef = firestore
+      .collection(collectionKey)
+      .doc(auth.currentUser.uid)
+
+   // console.log(game)
+
+   // const createdAt = new Date()
+
+   // const newGame = { finishedAt: createdAt, boxScore: boxScore, homeScore: homeScore, awayScore: awayScore }
+
+   const batch = firestore.batch()
+
+   for (const game of games) {
+      batch.update(userRef, { 'games': firebase.firestore.FieldValue.arrayUnion(game) })
+   }
+
+   await batch.commit()
+
+   // return await userRef
+   //    .update(
+   //       { 'games': firebase.firestore.FieldValue.arrayUnion(game) }
+   //    )
+   //    .then()
+   //    .catch(err => console.log(err))
+}

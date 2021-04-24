@@ -216,7 +216,7 @@ export const finishStats = players => {
       }
    }, INIT)
 
-   const finalStats = players.map(player => {
+   const playerStats = players.map(player => {
 
       const newPlayer = {
          ...player,
@@ -234,7 +234,7 @@ export const finishStats = players => {
 
    const teamStats = { playerName: 'TEAM', playerNumber: 'TOTAL', stats: { ...stats } }
 
-   return [...finalStats, teamStats]
+   return [...playerStats, teamStats]
 }
 
 export const opponentScore = (starting, points) => {

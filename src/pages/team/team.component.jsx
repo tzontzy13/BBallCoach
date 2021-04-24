@@ -21,8 +21,8 @@ import WithSpinner from '../../components/with-spinner/with-spinner.component'
 const TeamPage = ({ match, teamExists }) => {
 
    useEffect(() => {
-      console.log('team component')
-      console.log(teamExists)
+      // console.log('team component')
+      // console.log(teamExists)
    })
 
    return (
@@ -61,6 +61,16 @@ const TeamPage = ({ match, teamExists }) => {
             exact
             path={`${match.path}/create`}
             component={TeamCreate}
+         />
+         <Route
+            exact
+            path={`${match.path}/howto`}
+            render={() => <div>how to page</div>}
+         />
+         <Route
+            exact
+            path={`${match.path}/analysis`}
+            render={() => <div>analysis page</div>}
          />
       </div>
    )

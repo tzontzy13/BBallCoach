@@ -14,7 +14,8 @@ const Logo = ({ boxScore, history, awayScore, homeScore }) => {
 
    const handleSave = () => {
       saveGameBoxScoreToUser('users', boxScore, homeScore, awayScore)
-         .then(history.push('/team/history'))
+         .then()
+         // history.push('/team/history')
          .catch(err => (console.log(err)))
    }
 

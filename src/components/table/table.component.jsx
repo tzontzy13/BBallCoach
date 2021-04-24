@@ -182,7 +182,6 @@ function App({ tableRows }) {
    const test = tableRows.boxScore.map(row => {
       return { playerName: row.playerName, playerNumber: row.playerNumber, ...row.stats }
    })
-   // console.log(test)
 
    return (
       <Styles>

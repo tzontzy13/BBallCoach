@@ -47,7 +47,8 @@ const teamReducer = (state = INITIAL_STATE, action) => {
             isFetching: false,
             teamName: action.payload.teamName,
             players: action.payload.players,
-            history: action.payload.history
+            history: action.payload.history,
+            mlStats: action.payload.mlStats
          }
 
       case TeamActionTypes.FETCH_TEAM_FAIL:

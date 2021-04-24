@@ -18,7 +18,8 @@ export function* fetchTeamAsync() {
          const data = yield take(channel)
          const teamData = data.data().team
          const gameData = data.data().games
-         yield put(fetchTeamSuccess({ ...teamData, history: gameData }))
+         const mlStats = data.data().mlStats
+         yield put(fetchTeamSuccess({ ...teamData, history: gameData, mlStats: mlStats }))
          yield put(setTeamChecked(true))
       }
 
