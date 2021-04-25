@@ -1,0 +1,78 @@
+.analysis-page{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   .analysis-page-title{
+      padding-bottom: 1rem;
+   }
+
+   .analysis-page-body{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .analysis-page-seasonal{
+         width: 33%;
+         text-align: center;
+         border: 3px solid rgb(255, 216, 174);
+         border-radius: 10px;
+
+         .analysis-page-obj{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
+            .entry{
+               width: 33%;
+            }
+         }
+      }
+
+      .analysis-page-aoi{
+         width: 33%;
+         text-align: center;
+         border: 3px solid rgb(220, 186, 150);
+         border-radius: 10px;
+
+         .analysis-page-obj{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
+            .entry{
+               width: 33%;
+            }
+         }
+      }
+
+      .analysis-page-advanced{
+         width: 33%;
+         text-align: center;
+         border: 3px solid rgb(157, 133, 108);
+         border-radius: 10px;
+
+         .analysis-page-obj{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
+            .entry{
+               width: 33%;
+            }
+         }
+      }
+
+      .analysis-page-rules{
+         width: 100%;
+         text-align: center;
+         padding-left: 2rem;
+         padding-right: 2rem;
+      }
+   }
+}

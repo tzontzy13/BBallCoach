@@ -9,6 +9,8 @@ import { selectIsTeamFetching, selectIsTeamLoaded } from '../../redux/team/team.
 
 import { withRouter, Route, Redirect } from 'react-router-dom'
 
+import Analysis from '../analysis/analysis.container'
+import HowTo from '../howto/howto.component'
 import TeamMenu from '../../components/team-menu/team-menu.component'
 import TeamCreate from '../../components/team-creation/team-creation.component'
 import TeamSelect from '../../components/team-select/team-select.component'
@@ -18,7 +20,7 @@ import HistoryPage from '../history/history.component'
 import BoxScore from '../../components/box-score/box-score.component'
 import WithSpinner from '../../components/with-spinner/with-spinner.component'
 
-const TeamPage = ({ match, teamExists }) => {
+const TeamPage = ({ match, teamExists, mlStats }) => {
 
    useEffect(() => {
       // console.log('team component')
@@ -65,19 +67,20 @@ const TeamPage = ({ match, teamExists }) => {
          <Route
             exact
             path={`${match.path}/howto`}
-            render={() => <div>how to page</div>}
+            render={() => teamExists ? (<HowTo />) : (<Redirect to={`${match.path}`} />)}
          />
          <Route
             exact
             path={`${match.path}/analysis`}
-            render={() => <div>analysis page</div>}
+            render={() => teamExists ? (<Analysis />) : (<Redirect to={`${match.path}`} />)}
          />
       </div>
    )
 }
 
 const mapStateToProps2 = state => ({
-   teamExists: state.team.teamName
+   teamExists: state.team.teamName,
+   mlStats: state.team.mlStats
 })
 
 const mapStateToProps = state => ({

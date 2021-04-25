@@ -8,7 +8,8 @@ const INITIAL_STATE = {
    history: [],
    isFetching: false,
    errorMessage: undefined,
-   wasChecked: false
+   wasChecked: false,
+   mlStats: undefined
 }
 
 const teamReducer = (state = INITIAL_STATE, action) => {

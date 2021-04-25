@@ -7,8 +7,6 @@ from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import KFold
 
-# functions_framework --target=rf_model
-
 
 def rf_model(request):
 
@@ -85,7 +83,8 @@ def rf_model(request):
 
     results = []
     for x in games.columns:
-        if ((x != 'winner') and (x != 'poss') and (x != 'pts') and (x != 'ast')):
+        if ((x != 'winner') and (x != 'poss') and (x != 'pts') and (x != 'fg') and (x != 'ft') and (x != 'p3')):
+            # and (x != 'ast')
             results.append(x)
 
     X = games[results]
@@ -102,8 +101,8 @@ def rf_model(request):
                                 seasonAvg['tov'] + (0.44 * seasonAvg['fta']) - seasonAvg['orb'])
     seasonAvg['ts'] = seasonAvg['pts'] / \
         (2 * (seasonAvg['fga'] + (0.44 * seasonAvg['fta'])))
-    seasonAvg['efg'] = seasonAvg['fg'] + \
-        (0.5 * seasonAvg['p3'])/seasonAvg['fga']
+    seasonAvg['efg'] = (seasonAvg['fg'] +
+                        0.5 * seasonAvg['p3'])/seasonAvg['fga']
     seasonAvg['ortg'] = seasonAvg['pts'] * 100 / seasonAvg['poss']
     seasonAvg['ast/to'] = seasonAvg['ast'] / seasonAvg['tov']
 
@@ -120,8 +119,8 @@ def rf_model(request):
         impr.append(imp)
 
     avg_impr = np.mean(impr, axis=0)
-    avg_impr_df = pd.DataFrame(avg_impr, index=['blk', 'drb', 'fg', 'fga', 'fgp', 'ft', 'fta', 'ftp', 'orb', 'p3',
-                                                'p3a', 'p3p', 'pf', 'stl', 'tov', 'trb'])
+    avg_impr_df = pd.DataFrame(avg_impr, index=[
+                               'ast', 'blk', 'drb', 'fga', 'fgp', 'fta', 'ftp', 'orb', 'p3a', 'p3p', 'pf', 'stl', 'tov', 'trb'])
 
     return ({
         "seasonalStats": seasonAvg.to_json(),
