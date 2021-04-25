@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import './sign-in.styles.scss'
 
+import { auth } from '../../firebase/firebase.utils'
+
 import FormInput from '../form-input/form-input.component'
 import CustomButton from '../custom-button/custom-button.component'
 
@@ -24,6 +26,13 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
       const { value, name } = event.target
 
       setUserCredentials({ ...userCredentials, [name]: value })
+   }
+
+   const handlePasswordReset = (event) => {
+      event.preventDefault()
+
+      auth.sendPasswordResetEmail(email)
+      setUserCredentials({ ...userCredentials, email: '' })
    }
 
 
@@ -56,6 +65,9 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
                <CustomButton type='button' onClick={googleSignInStart} isGoogleSignIn>Sign in with Google</CustomButton>
             </div>
          </form>
+         <div><strong>Forgot your password?</strong></div>
+         <div><strong>Type in your email and click below:</strong></div>
+         <CustomButton onClick={handlePasswordReset}>Reset Password - link in email</CustomButton>
       </div>
    )
 }

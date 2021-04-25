@@ -30,11 +30,11 @@ const teamReducer = (state = INITIAL_STATE, action) => {
             players: removePlayerFromTeam(state.players, action.payload)
          }
 
-      // case TeamActionTypes.FETCH_TEAM_START:
-      //    return {
-      //       ...state,
-      //       isFetching: true
-      //    }
+      case TeamActionTypes.FETCH_TEAM_START:
+         return {
+            ...state,
+            isFetching: true
+         }
 
       case 'TEAM_CHECKED':
          return {
