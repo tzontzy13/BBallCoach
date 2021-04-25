@@ -12,8 +12,8 @@ const GameTime = ({ setTime, quarter, toggleTimeRunning }) => {
 
    const clockRef = useRef()
 
-   useKeypress([' ', 'c'], (event) => {
-      if (event.key === 'c') {
+   useKeypress([' ', 'c', 'C'], (event) => {
+      if (event.key === 'c' || event.key === 'C') {
 
          if (clockRef.current.isPaused() || clockRef.current.isStopped()) {
             clockRef.current.start()
@@ -33,14 +33,14 @@ const GameTime = ({ setTime, quarter, toggleTimeRunning }) => {
       toggleTimeRunning()
    }
 
-   // const min10 = 600000
+   const min10 = 600000
    // const min12 = 720000
-   const sec10 = 10000
+   // const sec10 = 10000
 
    return (
       <div>
          <Countdown
-            date={Date.now() + sec10}
+            date={Date.now() + min10}
             renderer={renderer}
             autoStart={false}
             intervalDelay={0}

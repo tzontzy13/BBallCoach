@@ -28,7 +28,7 @@ describe('User reducer tests', () => {
             "pf": 0,
             "pts": 0,
             "plusMinus": 0,
-            "subIn": 10000
+            "subIn": 600000
          }
       },
       {
@@ -55,7 +55,7 @@ describe('User reducer tests', () => {
             "pf": 0,
             "pts": 0,
             "plusMinus": 0,
-            "subIn": 10000
+            "subIn": 600000
          }
       },],
       bench: [
@@ -347,7 +347,7 @@ describe('User reducer tests', () => {
       },
       selected: '13',
       possession: 0,
-      timeRunning: 10000,
+      timeRunning: 600000,
       clockPaused: true,
       quarter: 1,
       finalBoxScore: null
@@ -416,7 +416,7 @@ describe('User reducer tests', () => {
          "plusMinus": 0,
          "pts": 0,
          "stl": 0,
-         "subIn": 10000,
+         "subIn": 600000,
          "tov": 0,
          "trb": 0,
       }
@@ -560,7 +560,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -587,7 +587,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -623,7 +623,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -650,7 +650,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -686,7 +686,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -713,7 +713,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -749,7 +749,7 @@ describe('User reducer tests', () => {
                "pf": 1,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -776,7 +776,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -812,7 +812,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -839,7 +839,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -875,7 +875,7 @@ describe('User reducer tests', () => {
                "pf": 1,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -902,7 +902,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -938,7 +938,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -965,7 +965,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -1005,7 +1005,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": -3,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -1032,7 +1032,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": -3,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -1070,7 +1070,7 @@ describe('User reducer tests', () => {
                   "pf": 0,
                   "pts": 0,
                   "plusMinus": 0,
-                  "subIn": 10000
+                  "subIn": 600000
                }
             },
             {
@@ -1097,7 +1097,7 @@ describe('User reducer tests', () => {
                   "pf": 0,
                   "pts": 0,
                   "plusMinus": 0,
-                  "subIn": 10000
+                  "subIn": 600000
                }
             },],
          bench: [
@@ -1125,7 +1125,7 @@ describe('User reducer tests', () => {
                   "pf": 0,
                   "pts": 0,
                   "plusMinus": 0,
-                  "subIn": 10000
+                  "subIn": 600000
                }
             },
             {
@@ -1472,7 +1472,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -1499,7 +1499,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -1534,7 +1534,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -1561,7 +1561,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -1596,7 +1596,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -1623,7 +1623,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 0,
-               "subIn": 10000
+               "subIn": 600000
             }
          },]
       })
@@ -1660,7 +1660,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 2,
                "plusMinus": 2,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -1687,7 +1687,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 2,
-               "subIn": 10000
+               "subIn": 600000
             }
          },],
          homeScore: {
@@ -1726,7 +1726,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 3,
                "plusMinus": 3,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -1753,7 +1753,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 3,
-               "subIn": 10000
+               "subIn": 600000
             }
          },],
          homeScore: {
@@ -1792,7 +1792,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 1,
                "plusMinus": 1,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -1819,7 +1819,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 1,
-               "subIn": 10000
+               "subIn": 600000
             }
          },],
          homeScore: {
@@ -1860,7 +1860,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 2,
                "plusMinus": 2,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -1887,7 +1887,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 2,
-               "subIn": 10000
+               "subIn": 600000
             }
          },],
          homeScore: {
@@ -1926,7 +1926,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 3,
                "plusMinus": 3,
-               "subIn": 10000
+               "subIn": 600000
             }
          },
          {
@@ -1953,7 +1953,7 @@ describe('User reducer tests', () => {
                "pf": 0,
                "pts": 0,
                "plusMinus": 3,
-               "subIn": 10000
+               "subIn": 600000
             }
          },],
          homeScore: {

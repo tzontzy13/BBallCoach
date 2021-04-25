@@ -15,7 +15,7 @@ const INITIAL_STATE = {
    },
    selected: '',
    possession: 0,
-   timeRunning: 10000,
+   timeRunning: 600000,
    clockPaused: true,
    quarter: 1,
    finalBoxScore: null
@@ -78,7 +78,7 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             } else {
                return {
                   ...state,
-                  timeRunning: 10000,
+                  timeRunning: 600000,
                   starting: resetPlayingTime(state.starting),
                   quarter: state.quarter + 1,
                   finalBoxScore: finalScoreBoard
@@ -88,7 +88,7 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             return {
                ...state,
                timeRunning: action.payload,
-               starting: setPlayingTime(state.starting, action.payload),
+               starting: newStartingTime,
                finalBoxScore: finalScoreBoard
             }
          }

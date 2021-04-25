@@ -225,14 +225,13 @@ export const finishStats = players => {
             fgp: (player.stats.fg / player.stats.fga).toFixed(3),
             p3p: (player.stats.p3 / player.stats.p3a).toFixed(3),
             ftp: (player.stats.ft / player.stats.fta).toFixed(3),
-            trb: player.stats.orb + player.stats.drb,
          }
       }
 
       return newPlayer
    })
 
-   const teamStats = { playerName: 'TEAM', playerNumber: 'TOTAL', stats: { ...stats } }
+   const teamStats = { playerName: 'TEAM', playerNumber: 'TOTAL', stats: { ...stats, fgp: (stats.fg / stats.fga).toFixed(3), p3p: (stats.p3 / stats.p3a).toFixed(3), ftp: (stats.ft / stats.fta).toFixed(3) } }
 
    return [...playerStats, teamStats]
 }
@@ -262,7 +261,7 @@ export const resetPlayingTime = (starting) => {
       const playerMP = player.stats.subIn
       const totalMP = player.stats.mp + playerMP
 
-      return { ...player, stats: { ...player.stats, mp: totalMP, subIn: 10000 } }
+      return { ...player, stats: { ...player.stats, mp: totalMP, subIn: 600000 } }
    })
 
    return newStarting
@@ -305,7 +304,7 @@ export const addPlayerTo5 = (bench, starting, playerNumberToAdd) => {
    const findPlayer = bench.find(player => player.playerNumber === playerNumberToAdd)
 
    if (findPlayer !== undefined) {
-      const newPlayer = { ...findPlayer, stats: { ...findPlayer.stats, subIn: 10000 } }
+      const newPlayer = { ...findPlayer, stats: { ...findPlayer.stats, subIn: 600000 } }
       const newBench = bench.filter(player => player !== findPlayer)
       const newStarting = [...starting, newPlayer]
 
@@ -361,7 +360,7 @@ export const addSteal = (starting, selected) => {
 
 export const addDReb = (starting, selected) => {
    const findPlayer = starting.find(player => player.playerNumber === selected)
-   const newPlayer = { ...findPlayer, stats: { ...findPlayer.stats, drb: findPlayer.stats.drb + 1 } }
+   const newPlayer = { ...findPlayer, stats: { ...findPlayer.stats, drb: findPlayer.stats.drb + 1, trb: findPlayer.stats.trb + 1 } }
 
    const playerIndex = starting.indexOf(findPlayer)
    let newArray = [...starting]
@@ -372,7 +371,7 @@ export const addDReb = (starting, selected) => {
 
 export const addOReb = (starting, selected) => {
    const findPlayer = starting.find(player => player.playerNumber === selected)
-   const newPlayer = { ...findPlayer, stats: { ...findPlayer.stats, orb: findPlayer.stats.orb + 1 } }
+   const newPlayer = { ...findPlayer, stats: { ...findPlayer.stats, orb: findPlayer.stats.orb + 1, trb: findPlayer.stats.trb + 1 } }
 
    const playerIndex = starting.indexOf(findPlayer)
    let newArray = [...starting]

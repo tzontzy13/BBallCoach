@@ -7,6 +7,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import KFold
 
+# functions_framework --target=rf_model
+
 
 def rf_model(request):
 
@@ -36,6 +38,8 @@ def rf_model(request):
         request_json = request.get_json(silent=True)
     else:
         raise ValueError("JSON is invalid")
+
+    print('started')
 
     def run_rf(X_train, X_test, y_train, y_test):
 
