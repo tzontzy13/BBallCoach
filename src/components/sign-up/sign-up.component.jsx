@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import './sign-up.styles.scss'
@@ -8,7 +8,13 @@ import CustomButton from '../custom-button/custom-button.component'
 
 import { signUpStart } from '../../redux/user/user.actions'
 
-const SignUp = ({ signUpStart }) => {
+const SignUp = ({ signUpStart, error }) => {
+
+   useEffect(() => {
+      if (error) {
+         alert(error.message)
+      }
+   })
 
    const [userCredentials, setUserCredentials] = useState({
       displayName: '',
@@ -86,4 +92,8 @@ const mapDispatchToProps = dispatch => ({
    signUpStart: userCredentials => dispatch(signUpStart(userCredentials))
 })
 
-export default connect(null, mapDispatchToProps)(SignUp)
+const mapStateToProps = state => ({
+   error: state.user.error
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
