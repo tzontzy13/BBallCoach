@@ -31,7 +31,9 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
    const handlePasswordReset = (event) => {
       event.preventDefault()
 
-      auth.sendPasswordResetEmail(email)
+      auth.sendPasswordResetEmail(email).catch(error => {
+         alert(error.message)
+      })
       setUserCredentials({ ...userCredentials, email: '' })
    }
 
