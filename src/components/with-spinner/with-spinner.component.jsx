@@ -1,3 +1,6 @@
+// copied code from
+// https://github.com/ZhangMYihua/lesson-30/tree/master/src/components/sign-in
+
 import React from 'react'
 
 import { SpinnerContainer, SpinnerOverlay } from './with-spinner.styles'
@@ -9,8 +12,8 @@ const WithSpinner = WrappedComponent => {
             <SpinnerContainer />
          </SpinnerOverlay>
       ) : (
-            <WrappedComponent {...otherProps} />
-         )
+         <WrappedComponent {...otherProps} />
+      )
    }
 
    return Spinner

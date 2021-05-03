@@ -1,3 +1,6 @@
+// copied and adapted code from
+// https://github.com/ZhangMYihua/lesson-30/blob/master/src/pages/sign-in-and-sign-up/sign-in-and-sign-up.component.jsx
+
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 

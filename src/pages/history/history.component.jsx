@@ -51,8 +51,8 @@ const HistoryPage = ({ history, match, gameHistory, teamName }) => {
    }
 
    const testF = () => {
-      postGames()
-      // builder()
+      // postGames()
+      builder()
    }
 
    const handleClick = (gameTime) => { history.push(`${match.path}/${gameTime}`) }

@@ -1,3 +1,6 @@
+// copied code from
+// https://github.com/ZhangMYihua/lesson-30/blob/master/src/redux/user/user.types.js
+
 const UserActionTypes = {
    SET_CURRENT_USER: 'SET_CURRENT_USER',
    GOOGLE_SIGN_IN_START: 'GOOGLE_SIGN_IN_START',

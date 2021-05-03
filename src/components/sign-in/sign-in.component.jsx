@@ -1,3 +1,6 @@
+// copied code from
+// https://github.com/ZhangMYihua/lesson-30/tree/master/src/components/sign-in
+
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 

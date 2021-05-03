@@ -27,5 +27,6 @@ yarn-error.log*
 cloudFunctions/2017-18_teamBoxScore.csv
 cloudFunctions/2017-18_playerBoxScore.csv
 cloudFunctions/2010-2019_officialBoxScore.csv
+cloudFunctions/data.py
 
 .VSCodeCounter

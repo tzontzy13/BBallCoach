@@ -9,7 +9,7 @@ import SignInUp from './pages/sign-in-up/sign-in-up.component'
 import WelcomePage from './pages/welcome/welcome.component'
 import TeamPageContainer from './pages/team/team.container'
 
-import WithSpinner from './components/with-spinner/with-spinner.component'
+import Spinner from './components/with-spinner/with-spinner.component'
 
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -20,6 +20,8 @@ import { selectCurrentUser } from './redux/user/user.selector'
 // The header is always present
 // Only one of the Routes in Switch is rendered at any given route
 
+// developed using
+// ReactRouterWebsite. 2021. React Router: Declarative Routing for React.js. [ONLINE] Available at: https://reactrouter.com/web/guides/quick-start. [Accessed 02 Mar 2021].
 const App = ({ currentUser }) => {
 
    return (
@@ -60,6 +62,6 @@ const mapStateToPropsForSpinner = state => ({
 const AppConnectedToUser = connect(mapStateToProps)(App)
 
 // connect App to Spinner
-const AppWithSpinner = compose(connect(mapStateToPropsForSpinner), WithSpinner)(AppConnectedToUser)
+const AppWithSpinner = compose(connect(mapStateToPropsForSpinner), Spinner)(AppConnectedToUser)
 
 export default AppWithSpinner

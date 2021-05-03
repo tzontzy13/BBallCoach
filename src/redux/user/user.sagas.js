@@ -1,3 +1,6 @@
+// copied code from
+// https://github.com/ZhangMYihua/lesson-30/blob/master/src/redux/user/user.sagas.js
+
 import { takeLatest, put, all, call } from 'redux-saga/effects'
 
 import UserActionTypes from './user.types'

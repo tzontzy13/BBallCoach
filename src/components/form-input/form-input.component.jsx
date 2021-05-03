@@ -1,3 +1,6 @@
+// copied code from
+// https://github.com/ZhangMYihua/lesson-30/tree/master/src/components/form-input
+
 import React from 'react'
 
 import './form-input.styles.scss'

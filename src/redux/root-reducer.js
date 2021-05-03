@@ -1,16 +1,13 @@
 import { combineReducers } from 'redux';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'
 
 import userReducer from './user/user.reducer'
 import teamReducer from './team/team.reducer'
 import gameReducer from './game/game.reducer'
 
-const persistConfig = {
-   key: 'root',
-   storage,
-   whitelist: ['']
-}
+// developed using the redux documentation - this code is standard for almost all react redux projects
+// https://redux.js.org/api/api-reference
+
+// combine user, team and game reducers
 
 const rootReducer = combineReducers({
    user: userReducer,
@@ -18,4 +15,4 @@ const rootReducer = combineReducers({
    game: gameReducer
 })
 
-export default persistReducer(persistConfig, rootReducer)
+export default rootReducer

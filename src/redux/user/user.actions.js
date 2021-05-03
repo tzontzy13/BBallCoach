@@ -1,3 +1,6 @@
+// copied code from
+// https://github.com/ZhangMYihua/lesson-30/blob/master/src/redux/user/user.actions.js
+
 import UserActionTypes from './user.types'
 
 export const checkUserSession = () => ({

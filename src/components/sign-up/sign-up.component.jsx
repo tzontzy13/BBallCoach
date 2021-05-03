@@ -1,3 +1,6 @@
+// copied code from
+// https://github.com/ZhangMYihua/lesson-30/tree/master/src/components/sign-up
+
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 

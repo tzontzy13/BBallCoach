@@ -1,3 +1,6 @@
+// copied code from
+// https://github.com/ZhangMYihua/lesson-30/tree/master/src/components/header
+
 import React from 'react'
 
 import './header.styles.scss'

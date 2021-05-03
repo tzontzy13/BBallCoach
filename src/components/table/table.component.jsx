@@ -1,3 +1,6 @@
+// adapted code from
+// https://www.npmjs.com/package/react-table
+
 import React from 'react'
 import styled from 'styled-components'
 import { useTable } from 'react-table'

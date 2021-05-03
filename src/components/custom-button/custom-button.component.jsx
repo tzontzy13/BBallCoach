@@ -1,3 +1,6 @@
+// copied code from
+// https://github.com/ZhangMYihua/lesson-30/tree/master/src/components/custom-button
+
 import React from 'react'
 
 import './custom-button.styles.scss'

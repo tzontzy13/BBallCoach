@@ -1,3 +1,5 @@
+# developed using the knowledge gained in the first term university 3rd year elective - Intro to AI
+
 import pandas as pd
 import sklearn as sk
 import numpy as np
@@ -8,15 +10,17 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.model_selection import KFold
 
+# make sure all dependencies are installed via pip or conda
+# use this in the command line to run functions locally
 # functions_framework --target=rf_model
 
 
 def rf_model(request):
 
-    # Set CORS headers for the preflight request
+    # https://cloud.google.com/functions/docs/writing/http#handling_cors_requests
+
     if request.method == 'OPTIONS':
-        # Allows GET requests from any origin with the Content-Type
-        # header and caches preflight response for an 3600s
+
         headers = {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST',
@@ -26,7 +30,6 @@ def rf_model(request):
 
         return ('', 204, headers)
 
-    # Set CORS headers for the main request
     headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST',
@@ -58,16 +61,6 @@ def rf_model(request):
         print('\n')
 
         return acc
-        #   print('\n')
-        #   print("accuracy is: ", acc)
-        #  importance = model.coef_
-        #  print(importance)
-        #  print('\n')
-        #  score = np.sqrt(metrics.mean_squared_error(y_model, y_test))
-        #  print(f"Final score (RMSE): {score}")
-        #  print('\n')
-        #  print('SVC - done')
-        #  print('\n')
 
     def run_rf(X_train, X_test, y_train, y_test):
 

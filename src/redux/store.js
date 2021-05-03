@@ -1,10 +1,17 @@
 import { createStore, applyMiddleware } from 'redux';
 import logger from 'redux-logger'
-import { persistStore } from 'redux-persist'
 import createSagaMiddleware from 'redux-saga'
 
 import rootSaga from './root-saga'
 import rootReducer from './root-reducer'
+
+// developed using the redux documentation - this code is standard for almost all react redux projects
+// https://redux.js.org/api/api-reference
+
+// redux store
+// middleware for sagas
+// logger in development environment
+// no logger in production (Firebase Hosting live app)
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -18,6 +25,4 @@ export const store = createStore(rootReducer, applyMiddleware(...middlewares))
 
 sagaMiddleware.run(rootSaga)
 
-export const persistor = persistStore(store)
-
-export default { store, persistor }
+export default store
