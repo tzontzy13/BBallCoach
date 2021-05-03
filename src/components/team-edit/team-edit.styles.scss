@@ -4,10 +4,20 @@
    grid-template-rows: auto auto auto;
    gap: 0px 0px;
    grid-template-areas:
+   ". team-edit-title team-edit-title ."
      "player-list-row player-list-row player-list-row player-list-row"
      "create-player create-player remove-player remove-player"
      ". custom-button custom-button .";
+
+     
  }
+
+ .team-edit-title{
+    grid-area: team-edit-title;
+   // justify-content: center;
+   // align-self: center;
+   // color:red;
+}
  
 .player-list-row {
    grid-area: player-list-row;

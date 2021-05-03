@@ -4,8 +4,6 @@ import './team.styles.scss'
 
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { createStructuredSelector } from 'reselect'
-import { selectIsTeamFetching, selectIsTeamLoaded } from '../../redux/team/team.selectors'
 
 import { withRouter, Route, Redirect } from 'react-router-dom'
 
@@ -20,7 +18,7 @@ import HistoryPage from '../history/history.component'
 import BoxScore from '../../components/box-score/box-score.component'
 import WithSpinner from '../../components/with-spinner/with-spinner.component'
 
-const TeamPage = ({ match, teamExists, mlStats }) => {
+const TeamPage = ({ match, teamExists }) => {
 
    useEffect(() => {
       // console.log('team component')
@@ -80,7 +78,6 @@ const TeamPage = ({ match, teamExists, mlStats }) => {
 
 const mapStateToProps2 = state => ({
    teamExists: state.team.teamName,
-   mlStats: state.team.mlStats
 })
 
 const mapStateToProps = state => ({

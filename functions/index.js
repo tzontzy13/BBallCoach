@@ -12,15 +12,8 @@ exports.triggerML = functions.firestore
       }
 
       if (data.mlStats != prevData.mlStats) {
-         return "no need to trigger 2"
+         return "no need to trigger"
       }
-
-      const fetcher = axios.create({
-         baseURL: "https://europe-west3-basketball-311116.cloudfunctions.net/SVC",
-         headers: {
-            'Content-Type': 'application/json',
-         },
-      });
 
       const games = data.games;
 
@@ -39,6 +32,13 @@ exports.triggerML = functions.firestore
          const combine = boxScores.map((game, index) => {
             return { ...game, winner: winner[index] }
          })
+
+         const fetcher = axios.create({
+            baseURL: "https://europe-west3-basketball-311116.cloudfunctions.net/SVC",
+            headers: {
+               'Content-Type': 'application/json',
+            },
+         });
 
          fetcher.post('', { ...combine }).then(res => {
             return change.after.ref.update({

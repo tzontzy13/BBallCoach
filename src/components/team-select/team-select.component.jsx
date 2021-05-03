@@ -40,6 +40,7 @@ const TeamSelect = ({ players, history, starting, setBench, setOpponentName }) =
          </div>
          <PlayerAdd />
          <CustomButton onClick={() => handleStart()}>Start game</CustomButton>
+         <h2>Only add 5 players. Type in their number, then press Add Player or the Enter key</h2>
       </div>
    )
 }

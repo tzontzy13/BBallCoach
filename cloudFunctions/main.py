@@ -5,6 +5,7 @@ import numpy as np
 from sklearn import metrics
 from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
 from sklearn.model_selection import KFold
 
 # functions_framework --target=rf_model
@@ -41,6 +42,33 @@ def rf_model(request):
 
     print('started')
 
+    def run_svc(X_train, X_test, y_train, y_test):
+        model = SVC(kernel='linear', C=10, gamma='scale',
+                    decision_function_shape='ovr', probability=True)
+        model.fit(X_train, y_train)
+
+        y_model = model.predict_proba(X_test)
+
+        y_model = np.argmax(y_model, axis=1)
+
+        acc = accuracy_score(y_test, y_model)
+
+        print("SVC accuracy:")
+        print(acc)
+        print('\n')
+
+        return acc
+        #   print('\n')
+        #   print("accuracy is: ", acc)
+        #  importance = model.coef_
+        #  print(importance)
+        #  print('\n')
+        #  score = np.sqrt(metrics.mean_squared_error(y_model, y_test))
+        #  print(f"Final score (RMSE): {score}")
+        #  print('\n')
+        #  print('SVC - done')
+        #  print('\n')
+
     def run_rf(X_train, X_test, y_train, y_test):
 
         accuracy_data = []
@@ -70,6 +98,8 @@ def rf_model(request):
         accuracy = accuracy_score(y_test, y_model)
         importance = rf_model.feature_importances_
 
+        print('random forrest accuracy:')
+        print(accuracy)
         return accuracy, importance
 
     games = pd.DataFrame.from_dict(request_json, orient='index')
@@ -110,17 +140,26 @@ def rf_model(request):
     seasonAvg['ortg'] = seasonAvg['pts'] * 100 / seasonAvg['poss']
     seasonAvg['ast/to'] = seasonAvg['ast'] / seasonAvg['tov']
 
-    # print(seasonAvg)
     # kfold testing
     accr = []
     impr = []
+    svc_accr = []
     kf = KFold(5)
+    kf_number = 1
     for train_index, test_index in kf.split(X, y):
         X_train, X_test = X.iloc[train_index], X.iloc[test_index]
         y_train, y_test = y.iloc[train_index], y.iloc[test_index]
+
+        print("K fold number:")
+        print(kf_number)
+        kf_number += 1
+
         acc, imp = run_rf(X_train, X_test, y_train, y_test)
         accr.append(acc)
         impr.append(imp)
+
+        svc_acc = run_svc(X_train, X_test, y_train, y_test)
+        svc_accr.append(svc_acc)
 
     avg_impr = np.mean(impr, axis=0)
     avg_impr_df = pd.DataFrame(avg_impr, index=[

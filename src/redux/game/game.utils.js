@@ -7,21 +7,21 @@ export const shot = (madeOrMiss, position, assistBy, selected, starting, homeSco
       const newStartingAfterShot = [...starting]
 
       if (position.includes('p2')) {
-         console.log('missed p2')
+         // console.log('missed p2')
 
          const newPlayer = { ...playerWhoShot, stats: { ...playerWhoShot.stats, fga: playerWhoShot.stats.fga + 1 } }
          newStartingAfterShot[playerWhoShotIndex] = newPlayer
          return { newStartingAfterShot, homeScore }
 
       } else if (position.includes('p3')) {
-         console.log('missed p3')
+         // console.log('missed p3')
 
          const newPlayer = { ...playerWhoShot, stats: { ...playerWhoShot.stats, fga: playerWhoShot.stats.fga + 1, p3a: playerWhoShot.stats.p3a + 1 } }
          newStartingAfterShot[playerWhoShotIndex] = newPlayer
          return { newStartingAfterShot, homeScore }
 
       } else if (position.includes('FT')) {
-         console.log('missed ft')
+         // console.log('missed ft')
 
          const newPlayer = { ...playerWhoShot, stats: { ...playerWhoShot.stats, fta: playerWhoShot.stats.fta + 1 } }
          newStartingAfterShot[playerWhoShotIndex] = newPlayer
@@ -32,13 +32,13 @@ export const shot = (madeOrMiss, position, assistBy, selected, starting, homeSco
    } else {
       const newStartingAfterShot2 = [...starting]
       if (assistBy) {
-         console.log('assist by ' + assistBy + ' position: ' + position)
+         // console.log('assist by ' + assistBy + ' position: ' + position)
 
          const playerWhoAssisted = starting.find(player => player.playerNumber === assistBy)
          const playerWhoAssistedIndex = starting.indexOf(playerWhoAssisted)
 
          if (position.includes('p2')) {
-            console.log('made p2')
+            // console.log('made p2')
 
             const newPlayer = {
                ...playerWhoShot, stats: {
@@ -67,7 +67,7 @@ export const shot = (madeOrMiss, position, assistBy, selected, starting, homeSco
             return { newStartingAfterShot, homeScore: { ...homeScore, total: homeScore.total + 2 } }
 
          } else if (position.includes('p3')) {
-            console.log('made p3')
+            // console.log('made p3')
 
             const newPlayer = {
                ...playerWhoShot, stats: {
@@ -99,10 +99,10 @@ export const shot = (madeOrMiss, position, assistBy, selected, starting, homeSco
 
          }
       } else {
-         console.log('no assist - made ' + position)
+         // console.log('no assist - made ' + position)
 
          if (position.includes('p2')) {
-            console.log('made p2')
+            // console.log('made p2')
 
             const newPlayer = {
                ...playerWhoShot, stats: {
@@ -121,7 +121,7 @@ export const shot = (madeOrMiss, position, assistBy, selected, starting, homeSco
             return { newStartingAfterShot, homeScore: { ...homeScore, total: homeScore.total + 2 } }
 
          } else if (position.includes('p3')) {
-            console.log('made p3')
+            // console.log('made p3')
 
             const newPlayer = {
                ...playerWhoShot, stats: {
@@ -142,7 +142,7 @@ export const shot = (madeOrMiss, position, assistBy, selected, starting, homeSco
             return { newStartingAfterShot, homeScore: { ...homeScore, total: homeScore.total + 3 } }
 
          } else if (position.includes('FT')) {
-            console.log('made ft')
+            // console.log('made ft')
 
             const newPlayer = {
                ...playerWhoShot, stats: {

@@ -40,7 +40,7 @@ const Analysis = ({ mlStats }) => {
             </div>
          </div>
          <div className='analysis-page-rules'>
-            <h2>Stats map:</h2>
+            <h2>Statistics abbreviations and meaning:</h2>
             <ul className="list-group">
                <li className="list-group-item d-flex justify-content-between align-items-center">
                   ast:

@@ -6,6 +6,17 @@ import firebaseConfig from './config'
 
 const config = firebaseConfig
 
+firebase.initializeApp(config)
+
+export const auth = firebase.auth()
+export const firestore = firebase.firestore()
+
+export default firebase
+
+export const googleProvider = new firebase.auth.GoogleAuthProvider()
+googleProvider.setCustomParameters({ prompt: 'select_account' })
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
    if (!userAuth) return;
 
@@ -68,17 +79,6 @@ export const getCurrentUser = () => {
       }, reject)
    })
 }
-
-firebase.initializeApp(config)
-
-export const auth = firebase.auth()
-export const firestore = firebase.firestore()
-
-export const googleProvider = new firebase.auth.GoogleAuthProvider()
-googleProvider.setCustomParameters({ prompt: 'select_account' })
-export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
-
-export default firebase
 
 // quick add to db - used in testing
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {

@@ -19,7 +19,13 @@
    .history-page-list{
       .list-group{
          .list-group-item{
+            margin-bottom: 0.15rem;
             min-height: 4rem;
+            &:hover{
+               color: darkslategray;
+               box-shadow: 2px 2px brown;
+               border-color: red;
+            }
 
             .list-group-item-details{
                display: flex;

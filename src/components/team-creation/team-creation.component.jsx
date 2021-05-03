@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom'
 
 import FormInput from '../form-input/form-input.component'
 import CustomButton from '../custom-button/custom-button.component'
-import CreatePlayer from '../create-player/create-player.component'
+import PlayerAdd from '../create-player/create-player.component'
 import PlayerList from '../player-list/player-list.component'
 
 import { addCollectionAndDocumentsToUser, auth } from '../../firebase/firebase.utils'
@@ -52,7 +52,7 @@ const TeamCreation = ({ players, history }) => {
                required
             />
 
-            <CreatePlayer />
+            <PlayerAdd />
 
             <div className='player-list-container'>
                <PlayerList players={players} />

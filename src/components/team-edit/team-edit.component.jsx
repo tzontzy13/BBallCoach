@@ -30,6 +30,7 @@ const TeamEdit = ({ players, teamName, history }) => {
 
    return (
       <div className='team-edit'>
+         <h2 className='team-edit-title'>Edit your team, add or remove players, then press submit!</h2>
          <PlayerList players={players} />
          <PlayerAdd />
          <PlayerRemove />

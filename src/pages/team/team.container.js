@@ -8,7 +8,7 @@ import TeamPage from './team.component'
 const AppContainer = ({ fetchTeamStart }) => {
 
    useEffect(() => {
-      console.log('started fetching')
+      // console.log('started fetching')
       fetchTeamStart()
    }, [fetchTeamStart])
 
